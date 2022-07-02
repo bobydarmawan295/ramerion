@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const port = 5000;
 
-// const authRouter = require("./routes/auth");
+const authRouter = require("./routes/auth");
 // const { authenticateToken, checkUser } = require("./middleware/verifyToken");
 // const router = require("./routes/index.js");
 

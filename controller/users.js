@@ -91,7 +91,7 @@ controller.signup_post = async (req, res) => {
   }
 };
 
-ccontroller.login_post = async (req, res) => {
+controller.login_post = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await login(email, password);

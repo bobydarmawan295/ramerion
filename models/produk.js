@@ -1,5 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/conn");
+const users = require("./users");
+const kategori_produk = require("./kategori_produk");
 
 const produk = sequelize.define('produk', {
 
@@ -23,7 +25,7 @@ const produk = sequelize.define('produk', {
         type : DataTypes.BIGINT,
         allowNull: false,
         references: {
-          model: kategori,
+          model: kategori_produk,
           key: 'id'
         }
     },

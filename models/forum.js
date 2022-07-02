@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/conn");
-
+const users = require("./users");
 const forum = sequelize.define('forum', {
 
     id : {

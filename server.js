@@ -1,49 +1,55 @@
-// import modul
 const express = require("express");
+const app = express();
+const port = 3000;
+const controller = require(`./controllers/indexcontroller`);
+const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const app = express();
-const port = 5000;
+dotenv.config();
 
-const authRouter = require("./routes/auth");
-// const { authenticateToken, checkUser } = require("./middleware/verifyToken");
-// const router = require("./routes/index.js");
+const { isDosen, isAdmin , checkUser } = require(`./middleware/authToken`);
 
-app.use(express.static("public"));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
-// app.get("*", checkUser);
+app.use(express.static("public"));
 
-// app.use("/auth", authRouter);
+app.get("*", checkUser);
 
-// app.use("/mahasiswa", mahasiswa);
-// app.use("/dosen", dosen);
-// app.use("/admin", admin);
+const auth = require("./Router/auth");
+app.use("/auth", auth);
 
-// app.get("/", authenticateToken, (req, res) => {
-//   res.render("home");
-// });
+//--------------------------------
 
-app.get("/about", (req, res) => {
-  res.render("about");
+app.get("/", (req, res) => {
+    res.render("index", { dasbordaktif: "active", rpsaktif: "" });
+ 
 });
 
-// app.get('/admin', adminAuth,  (req, res) => {
-//   model.findAll()
-//   .then(results => {
-//     res.render("admin", {data: results})
-//   });
-// });
+//lihat daftar user
+app.get("/user", controller.users.retrieveAll);
 
-// app.use("/", (req, res) => {
-//   res.render("err404.ejs");
-// });
-
-//connect dengan port
-app.listen(port, () => {
-    console.log(`Server Sedang Berjalan di http://localhost:${port}`);
-});
+app.get("/profil",(req,res) => {
+  const token = req.cookies.token;
+  if (!token) return res.redirect('/auth/login')
   
+  res.render("profil", { dasbordaktif: "", rpsaktif: "" });
+});
+
+
+app.get("/500",(req,res) => {
+    res.render("eror500");
+  });
+
+//----------------------------------
+app.use("/", (req, res) => {
+  res.render("eror404");
+});
+
+app.listen(port, () => {
+  console.log(`Server Sedang Berjalan di http://localhost:${port}`);
+});

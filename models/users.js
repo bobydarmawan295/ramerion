@@ -1,8 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const db = require(".,/config/conn.js");
+const sequelize = require("../config/conn");
 
-
-const users = db.define('users', {
+const users = sequelize.define('users', {
 
     id : {
         type : DataTypes.BIGINT,
@@ -10,13 +9,14 @@ const users = db.define('users', {
         primaryKey : true,
         autoIncrement: true
     },
-    email : {
+    name : {
         type : DataTypes.STRING,
         allowNull : false
     },
-    name: {
+    username : {
         type : DataTypes.STRING,
         allowNull : false
+
     },
     password : {
         type : DataTypes.STRING,
@@ -26,8 +26,8 @@ const users = db.define('users', {
         type : DataTypes.STRING
     },
     role : {
-        type : DataTypes.ENUM('A','M'),
-        allowNull : false,
+        type : DataTypes.STRING,
+        allowNull : true,
     },
     created_at : {
         type : DataTypes.DATE

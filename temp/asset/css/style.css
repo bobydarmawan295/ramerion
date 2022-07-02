@@ -189,7 +189,7 @@ p {
 .plus:hover {
   background-color: #717fe0 !important;
 }
-/*Prevent text selection*/
+Prevent text selection/
 .qty .span {
   -webkit-user-select: none;
   -moz-user-select: none;

@@ -20,8 +20,11 @@ app.use(express.static("public"));
 
 app.get("*", checkUser);
 
-const auth = require("./Router/auth");
+const auth = require("./routes/auth");
 app.use("/auth", auth);
+
+const blog = require("./routes/blog");
+app.use(blog);
 
 //--------------------------------
 

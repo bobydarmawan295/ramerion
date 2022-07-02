@@ -14,32 +14,32 @@
   <body>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#"><img src="asset/img/ramerionlogo.png" alt="Girl in a jacket" width="15%" /></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+ <!-- Navbar -->
+ <header class="py-3 mb-3 border-bottom bg-white text-dark">
+  <div class="container d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none " id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="../template/asset/img/ramerionlogo.png" alt="" width="100%"class="d-inline-block align-text-top">
+      </a>
+    </div>
+    <div class="d-flex ms-auto">
+      <div class="flex-shrink-0 dropdown">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
       </div>
-    </nav>
-    <!-- End Of Navbar  -->
+    </div>
+  </div>
+</header>
+<!-- End Of Navbar  -->
+
 
     <div class="container">
       <div class="main-body p-1">

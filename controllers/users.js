@@ -48,7 +48,7 @@ controller.register = async function (req, res) {
       name: name,
       username: username,
       password: hashPassword,
-      type: role,
+      role: role,
     });
     res.redirect("/auth/login");
   } catch (error) {

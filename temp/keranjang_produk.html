@@ -26,12 +26,12 @@
         <div class="d-flex ms-auto">
           <div class="col mr-2 flex" style="margin-right: 10px">
             <a href="keranjang_produk.html">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                <path
-                  d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                />
-              </svg>
-            </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                  <path
+                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                  />
+                </svg>
+              </a>
           </div>
           <div class="flex-shrink-0 dropdown">
             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -100,55 +100,99 @@
                 <div class="card-body p-2 p-sm-3">
                   <div class="media forum-item">
                     <div class="row">
-                        <div class="col-4 mb-4 mt-6"  >
-                            <img src="asset/img/sepatu (2).jpg" class="rounded float-start" alt="..." style="width: 18rem;">
+                        <div class="col-4 mb-4 mt-6" >
+                            <h2>Keranjang Belanja</h2>
+                        
                         </div>
-                        <div class="col-auto mt-4">
-                            <h2 class="card-title"><a href="" style="text-decoration:none">Sepatu Satu</a></h2>
-                            <span>$29.00</span>
-                            <div class="col-auto mt-4">
-                              <span>Stock</span>
-                              <h2 class="card-tittle">500</h2>
+                        <div class="col-12">
                             
-
-                            <div class="col-4 mb-4 mt-4 position-absolute bottom-0 end-0">
-                            <div class="card" style="width: 20rem; margin-top: 10px;">
-                                <div class="card-body">
-                                  <h6 class="card-subtitle mb-2 text-muted">Deskripsi :</h6>
-                                  <form>
-                                    <div class="mb-3">
-                                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                      <div id="emailHelp" class="form-text">Masukkan deskripsi produk (warna,ukuran,dll)</div>
-                                    </div>
-                                  </form>
-                                       <div class="qty mt-5">
-                                        <h6 class="card-subtitle mb-2 text-muted">Jumlah :</h6>
+                            <table class="table table-borderless">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Produk</th>
+                                    <th scope="col">Jumlah Produk</th>
+                                    <th scope="col">Harga</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                     <div class="row">
+                                        <div class="col-3">
+                                            <img src="asset/img/sepatu (2).jpg" class="rounded float-start" alt="..." style="width: 10rem;">
+                                        </div>
+                                     </div>
+                                     <div class="row text-center">
+                                        <div class="col-6 mr-5">
+                                            <h6>Sepatu Satu</h6>
+                                        </div>
+                                     </div>
+                                    </td>
+                                    <td>
+                                        <div class="qty">
+                                        <span class="minus bg-dark" onclick="handleCounterMin1()">-</span>
+                                        <input class="count" type="text" id="counter1" value="1" min="1" max="100">
+                                        <span class="plus bg-dark" onclick="handleCounterPlus1()">+</span>
+                                        </div>
+                                        <script>
+                                            const counter1 = document.getElementById("counter1");
+                                            let counterValue1= counter.value;
+            
+                                            function handleCounterPlus1(){
+                                                counter1.value = ++counter1.value;
+                                            }
+            
+                                            function handleCounterMin1(){
+                                                counter1.value = --counter1.value;
+                                            }     
+                                        </script>
+                                    </td>
+                                    <td>Rp. 25000</td>
+                                    <td>X</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                     <div class="row">
+                                        <div class="col-3">
+                                            <img src="asset/img/sepatu (2).jpg" class="rounded float-start" alt="..." style="width: 10rem;">
+                                        </div>
+                                     </div>
+                                     <div class="row text-center">
+                                        <div class="col-6 mr-5">
+                                            <h6>Sepatu Satu</h6>
+                                        </div>
+                                     </div>
+                                    </td>
+                                    <td>
+                                        <div class="qty">
                                         <span class="minus bg-dark" onclick="handleCounterMin()">-</span>
                                         <input class="count" type="text" id="counter" value="1" min="1" max="100">
                                         <span class="plus bg-dark" onclick="handleCounterPlus()">+</span>
-                                          <div class="position-relative">
-                                            <div class="col-auto position-absolute bottom-0 end-0">
-                                                <button type="button" class="btn btn-success">Masukkan Ke Troli</button>
-                                            </div>
                                         </div>
-                                       </div>               
-                                </div>
-                              </div>
+                                        <script>
+                                            const counter = document.getElementById("counter");
+                                            let counterValue = counter.value;
+            
+                                            function handleCounterPlus(){
+                                                counter.value = ++counter.value;
+                                            }
+            
+                                            function handleCounterMin(){
+                                                counter.value = --counter.value;
+                                            }     
+                                        </script>  
+                                    </td>
+                                    <td>Rp. 25000</td>
+                                    <td>X</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <div class="col-auto position-absolute bottom-0 end-0 mb-5 " style="margin-right: 10px;">
+                                <span>Total Belanja : Rp. 50.000 </span>
+                                <button type="button" class="btn btn-success">Checkout</button>
                             </div>
-                            <script>
-                                const counter = document.getElementById("counter");
-                                let counterValue = counter.value;
-
-                                function handleCounterPlus(){
-                                    counter.value = ++counter.value;
-                                }
-
-                                function handleCounterMin(){
-                                    counter.value = --counter.value;
-                                }     
-                            </script>       
                         </div>
-                    </div>
                     </div>
                   </div>
               </div>

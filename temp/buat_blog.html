@@ -23,11 +23,6 @@
       </a>
     </div>
     <div class="d-flex ms-auto">
-      <div class="col mr-2 flex" style="margin-right: 10px">
-        <a href="buat_blog.html">
-          <button type="button" class="btn btn-success">Buat Blog Anda</button>
-        </a>
-      </div>
       <div class="flex-shrink-0 dropdown">
         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -92,48 +87,38 @@
                   <div class="media forum-item">
                     <div class="row">
                       <div class="col-4 mb-4 mt-4">
-                        <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="asset/img/thumbnailCardPict.a8fabb33.jpg" width="90%" alt="User" /></a>
+                        <h4>Tulis Blog Anda</h4>
                       </div>
-                      <div class="col-6 mb-4 mt-4">
-                        <h4><a href="detail_blog.html" data-toggle="collapse" class="text-body" style="text-decoration: none">Apa itu BEM dan Mengapa Kita perlu menggunakannya untuk menamai kelas HTML ?</a></h4>
-                        <p class="text-secondary">Penerapan BEM dalam pengembangan Web</p>
+                      <div class="row">
+                        <div class="col-8 mb-4 mt-4">
+                            <form>
+                                <div class="mb-3">
+                                  <label for="exampleInputEmail1" class="form-label">Judul</label>
+                                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ex. Cara Menjadi Wirausaha yang Baik">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="exampleInputPassword1" class="form-label">Tags</label>
+                                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex. Saham, Investasi, Startup">
+                                </div>
+                                <div class="mb-3">
+                                      <label for="exampleInputPassword1" class="form-label">Isi Konten</label>
+                                      <textarea class="form-control" placeholder="Isi yang memuat konten anda" id="floatingTextarea"></textarea>
+                                  </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="customFile">Masukkan Cover</label>
+                                    <input type="file" class="form-control" id="customFile" /></div>
+                                <button type="submit" class="btn btn-primary" style="float:right;">Post</button>
+                              </form>
+                          </div>
+
                       </div>
+                    
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="card mb-2">
-                <div class="card-body p-2 p-sm-3">
-                  <div class="media forum-item">
-                    <div class="row">
-                      <div class="col-4 mb-4 mt-4 ms-0">
-                        <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="asset/img/thumbnailCardPict.a8fabb33.jpg" width="90%" alt="User" /></a>
-                      </div>
-                      <div class="col-6 mb-4 mt-4">
-                        <h4><a href="detail_blog.html" data-toggle="collapse" class="text-body" style="text-decoration: none">Apa itu BEM dan Mengapa Kita perlu menggunakannya untuk menamai kelas HTML ?</a></h4>
-                        <p class="text-secondary">Penerapan BEM dalam pengembangan Web</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card mb-2">
-                <div class="card-body p-2 p-sm-3">
-                  <div class="media forum-item">
-                    <div class="row">
-                      <div class="col-4 mb-4 mt-4">
-                        <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="asset/img/thumbnailCardPict.a8fabb33.jpg" width="90%" alt="User" /></a>
-                      </div>
-                      <div class="col-6 mb-4 mt-4">
-                        <h4><a href="#" data-toggle="collapse" class="text-body" style="text-decoration: none">Apa itu BEM dan Mengapa Kita perlu menggunakannya untuk menamai kelas HTML ?</a></h4>
-                        <p class="text-secondary">Penerapan BEM dalam pengembangan Web</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    
             <!-- /Forum List -->
             <!-- /Inner main body -->
           </div>

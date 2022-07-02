@@ -1,5 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/conn");
+const users = require("./users");
+const forum = require("./forum");
+
 
 const komentar_forum = sequelize.define('komentar_forum', {
 
@@ -23,7 +26,7 @@ const komentar_forum = sequelize.define('komentar_forum', {
         type : DataTypes.BIGINT,
         allowNull: false,
         references: {
-          model: blog,
+          model: forum,
           key: 'id'
         }
     },

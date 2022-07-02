@@ -24,7 +24,7 @@ const auth = require("./routes/auth");
 app.use("/auth", auth);
 
 const blog = require("./routes/blog");
-app.use(blog);
+app.use('/blog', blog);
 
 //--------------------------------
 

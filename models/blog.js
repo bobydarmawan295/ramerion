@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/conn");
 const users = require("./users");
+const kategori_blog = require("./kategori_blog");
 
 const blog = sequelize.define('blog', {
 
@@ -19,6 +20,15 @@ const blog = sequelize.define('blog', {
           key: 'id'
         }
     },
+    kategori_id:
+    {
+        type : DataTypes.BIGINT,
+        allowNull: false,
+        references: {
+          model: kategori_blog,
+          key: 'id'
+        }
+    },
     judul : {
         type : DataTypes.STRING,
         allowNull : false
@@ -30,14 +40,14 @@ const blog = sequelize.define('blog', {
     },
     created_at : {
         type : DataTypes.STRING,
-        allowNull : false
+        allowNull : true
     },
 
 }, {
     tableName: 'blog',
-    timestamps: true,
+    timestamps: false,
     // updatedAt: 'updated_at',
-    createdAt: 'created_at'
+    // createdAt: 'created_at'
 });
 
 module.exports = blog;

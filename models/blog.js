@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/conn");
 
-const users = sequelize.define('users', {
+const blog = sequelize.define('blog', {
 
     id : {
         type : DataTypes.BIGINT,
@@ -9,39 +9,34 @@ const users = sequelize.define('users', {
         primaryKey : true,
         autoIncrement: true
     },
-    name : {
+    user_id:
+    {
+        type : DataTypes.BIGINT,
+        allowNull: false,
+        references: {
+          model: users,
+          key: 'id'
+        }
+    },
+    judul : {
         type : DataTypes.STRING,
         allowNull : false
     },
-    username : {
+    konten : {
         type : DataTypes.STRING,
         allowNull : false
 
-    },
-    password : {
-        type : DataTypes.STRING,
-        allowNull : false
-    },
-    remember_token : {
-        type : DataTypes.STRING
-    },
-    role : {
-        type : DataTypes.STRING,
-        allowNull : true,
     },
     created_at : {
-        type : DataTypes.DATE
-       
+        type : DataTypes.STRING,
+        allowNull : false
     },
-    updated_at : {
-        type : DataTypes.DATE   
-    }
 
 }, {
-    tableName: 'users',
+    tableName: 'blog',
     timestamps: true,
-    updatedAt: 'updated_at',
+    // updatedAt: 'updated_at',
     createdAt: 'created_at'
 });
 
-module.exports = users;
+module.exports = blog;

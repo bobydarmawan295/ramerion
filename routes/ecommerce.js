@@ -8,6 +8,8 @@ router.use(express.static("public"));
 router.get("/", controller.ecommerce.getAllProduk)
 router.get("/:id/produk", controller.ecommerce.getProdukById)
 router.get("/jualProduk", controller.ecommerce.jualProduk)
+router.get("/:id/detailProduk", controller.ecommerce.detailProduk)
+router.get("/allCart", controller.ecommerce.allCart)
 router.get("/daftarBarang", controller.ecommerce.daftarBarang)
 router.get("/pesananPelanggan", controller.ecommerce.pesananPelanggan)
 router.get("/barangTerjual", controller.ecommerce.barangTerjual)

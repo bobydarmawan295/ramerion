@@ -32,7 +32,13 @@
                             </div>
                             <form action="/forum/addForum" method="post">
                               <div class="modal-body">
-                            
+                                <div class="form-floating">
+                                  <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 50px" name="judul"></input>
+                                  <label for="floatingTextarea2">Masukkan judul pertanyaan anda</label>
+                                </div>
+                              </div>
+                              
+                              <div class="modal-body">
                                 <div class="form-floating">
                                   <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="konten"></textarea>
                                   <label for="floatingTextarea2">Tanyakan sesuatu pada rangers</label>
@@ -40,7 +46,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" type="submit">Send!</button>
+                                <button class="btn btn-primary" type="submit">Send!</button>
                               </div>
                             </form>
                             

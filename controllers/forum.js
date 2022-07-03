@@ -78,12 +78,10 @@ controller.getForumById= async (req, res) => {
         const { user_id,judul,konten} = req.body;
         await model.forum.create({
             user_id: 2,
+            judul: judul,
             konten: konten,
         });
-        res.status(200).json({
-          message: 'berhasil menambahkan forum'
-      })
-        //   res.redirect("/dosen/courses");
+          res.redirect("/forum");
       } catch (error) {
         res.json({ message: error.message });
         // res.redirect("/dosen/add-course");

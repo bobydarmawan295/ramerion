@@ -21,7 +21,8 @@ const forum = sequelize.define('forum', {
     },
 
     judul : {
-        type : DataTypes.STRING
+        type : DataTypes.STRING,
+        allowNull: false,
     },
 
     konten : {

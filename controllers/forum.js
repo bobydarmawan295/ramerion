@@ -77,8 +77,7 @@ controller.getForumById= async (req, res) => {
     try {
         const { user_id,judul,konten} = req.body;
         await model.forum.create({
-            user_id: user_id,
-            judul: judul,
+            user_id: 2,
             konten: konten,
         });
         res.status(200).json({

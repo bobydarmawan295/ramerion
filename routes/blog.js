@@ -27,7 +27,7 @@ const fileStorage = multer.diskStorage({
   
 
 router.get("/", controller.blog.getAllBlog);
-router.get("/:id/getBlog", controller.blog.getBlogById);
+router.get("/detail-:id", controller.blog.getBlogById);
 router.get("/addBlog",controller.blog.getBlog);
 router.post("/addBlog", controller.blog.addBlog);
 router.put("/updateBlog/:id", controller.blog.updateBlog);

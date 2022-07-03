@@ -58,7 +58,7 @@ controller.getBlogById= async (req, res) => {
         })
         .then((result) => {
           if (result) {
-            res.render("blog/detailBlog", { items: result,blogActive: "active", forumActive: "", ecommerceActive:"" });
+            res.render("blog/detailBlog", { items: result, blogActive: "active", forumActive: "", ecommerceActive:"" });
             // res.send(result)
             // res.status(200).json({
             //   message: 'mendapat id blog',

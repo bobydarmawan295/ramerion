@@ -1,7 +1,9 @@
 const express = require("express");
 const controller = require(`../controllers/indexcontroller`);
 
-const router = express.Router();
+const router = express();
+router.set("view engine", "ejs");
+router.use(express.static("public"));
 
 
 router.get("/", controller.blog.getAllBlog);

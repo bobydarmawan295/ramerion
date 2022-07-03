@@ -4,32 +4,32 @@ const { Op, QueryTypes  } = require("sequelize");
 const controller = {};
 
 controller.getAllBlog = async (req, res) => {
-    // try {
-    //   await model.blog
-    //     .findAll({
-    //       attributes: ['id','user_id','judul','summary', 'konten'],
-    //       // group: ['user_id']
-    //       // raw: true,
-    //     })
-    //     .then((result) => {
-    //       if (result.length > 0) {
-            res.render("blog/allBlog");
-    //         res.status(200).json({
-    //             message: 'mendapat data blog',
-    //             data: result
-    //         })
-    //       } else {
-    //         res.status(404).json({
-    //             message: "data tidak ada",
-    //             data: [],
-    //         });
-    //       }
-    //     });
-    // } catch (error) {
-    //   res.status(404).json({
-    //     message: error,
-    //   });
-    // }
+    try {
+      await model.blog
+        .findAll({
+          attributes: ['id','user_id','judul','summary', 'konten'],
+          // group: ['user_id']
+          // raw: true,
+        })
+        .then((result) => {
+          if (result.length > 0) {
+            res.render("blog/allBlog", {items : result, blogActive: "active", forumActive: "", ecommerceActive:""});
+            // res.status(200).json({
+            //     message: 'mendapat data blog',
+            //     data: result
+            // })
+          } else {
+            res.status(404).json({
+                message: "data tidak ada",
+                data: [],
+            });
+          }
+        });
+    } catch (error) {
+      res.status(404).json({
+        message: error,
+      });
+    }
   };
 
 controller.getBlogById= async (req, res) => {
@@ -37,17 +37,29 @@ controller.getBlogById= async (req, res) => {
       await model.blog
         .findOne({
           attributes: ['id','user_id','judul','summary', 'konten'],
+          include: [
+            {
+              model: model.komentar_blog,
+              attributes: ["id", "blog_id","user_id","komentar"],
+              required: true,
+            },
+            // {
+            //   model: model.users,
+            //   attributes: ["id", "name"],
+            //   required: false,
+            // },
+          ],
           where: {
             id: req.params.id,
           },
         })
         .then((result) => {
           if (result) {
-            // res.render("blog/editBlog", { items: result,dasbordaktif: "", rpsaktif: "active"  });
+            // res.render("blog/detailBlog", { items: result,blogActive: "active", forumActive: "", ecommerceActive:"" });
             res.status(200).json({
               message: 'mendapat id blog',
               data: result
-          })
+            })
           } else {
             res.status(404).json({
               message: "data tidak ada",

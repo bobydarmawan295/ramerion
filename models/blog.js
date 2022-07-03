@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/conn");
 const users = require("./users");
-const kategori_blog = require("./kategori_blog");
+const komentar_blog = require("./komentar_blog");
 
 const blog = sequelize.define('blog', {
 
@@ -23,11 +23,8 @@ const blog = sequelize.define('blog', {
     kategori_id:
     {
         type : DataTypes.BIGINT,
-        allowNull: false,
-        references: {
-          model: kategori_blog,
-          key: 'id'
-        }
+        allowNull: false
+        
     },
     judul : {
         type : DataTypes.STRING,
@@ -52,7 +49,10 @@ const blog = sequelize.define('blog', {
     tableName: 'blog',
     timestamps: false,
     // updatedAt: 'updated_at',
-    createdAt: 'created_at'
+    // createdAt: 'created_at'
 });
+
+blog.hasMany(komentar_blog,{ foreignKey: "blog_id" });
+komentar_blog.belongsTo(blog);
 
 module.exports = blog;

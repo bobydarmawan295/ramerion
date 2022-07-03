@@ -12,7 +12,7 @@ const blog = require("./routes/blog");
 const forum= require("./routes/forum");
 const ecommerce= require("./routes/ecommerce");
 
-const { isMahasiswa, isAdmin , isPenjual, checkUser } = require(`./middleware/authToken`);
+const { isPenjual, isAdmin , checkUser } = require(`./middleware/authToken`);
 
 
 app.use(bodyParser.json());
@@ -35,7 +35,7 @@ app.use('/forum', forum);
 app.get("/", (req, res) => {
     const token = req.cookies.token;
     if (!token) return res.redirect('/auth/login')
-    res.render("index", { dasbordaktif: "active", rpsaktif: "" });
+    res.render("forum/allForum");
 });
 
 //lihat daftar user

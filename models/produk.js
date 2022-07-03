@@ -35,7 +35,7 @@ const produk = sequelize.define('produk', {
     },
     gambar : {
         type : DataTypes.BLOB,
-        allowNull : false
+        allowNull : true
     },
 
     deskripsi : {
@@ -47,11 +47,11 @@ const produk = sequelize.define('produk', {
         type : DataTypes.STRING,
         allowNull : false
     },
-    harga_before : {
+    hargabefore : {
         type : DataTypes.INTEGER,
         allowNull : false
     },
-    harga_after : {
+    hargaafter : {
         type : DataTypes.INTEGER,
         allowNull : false
     },
@@ -64,9 +64,9 @@ const produk = sequelize.define('produk', {
 
 },{
     tableName: 'produk',
-    timestamps: true,
+    timestamps: false,
     // updatedAt: 'updated_at',
-    createdAt: 'created_at'
+    // createdAt: 'created_at'
 });
 
 module.exports = produk;

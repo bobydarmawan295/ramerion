@@ -2,7 +2,7 @@
 GET http://localhost:3000/blog/
 
 ###
-POST http://localhost:3000/blog/2
+GET http://localhost:3000/blog/2
 
 ###
 POST http://localhost:3000/blog/addBlog
@@ -28,3 +28,22 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/blog/deleteBlog/1
+
+###
+GET http://localhost:3000/blog/comment/all
+
+###
+POST http://localhost:3000/blog/addComment
+Content-Type: application/json
+
+{
+     "blog_id": 2,
+     "user_id": 1,
+     "komentar" : "sangat menarik"
+} 
+
+###
+DELETE http://localhost:3000/blog/deleteComment/3
+
+###
+GET http://localhost:3000/ecommerce/p

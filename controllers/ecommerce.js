@@ -13,11 +13,11 @@ controller.getAllProduk = async (req, res) => {
         })
         .then((result) => {
           if (result.length > 0) {
-            // res.render("blog/allProduk", { items: result ,dasbordaktif: "", rpsaktif: "active" });
-            res.status(200).json({
-                message: 'mendapat data produk',
-                data: result
-            })
+            res.render("e-commerce/allProduk", { items: result ,blogActive: "", forumActive: "", ecommerceActive:"active" });
+            // res.status(200).json({
+            //     message: 'mendapat data produk',
+            //     data: result
+            // })
           } else {
             res.status(404).json({
                 message: "data tidak ada",

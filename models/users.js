@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/conn");
+const blog = require("./blog");
 
 const users = sequelize.define('users', {
 
@@ -43,5 +44,8 @@ const users = sequelize.define('users', {
     updatedAt: 'updated_at',
     createdAt: 'created_at'
 });
+
+// users.hasOne(blog,{ foreignKey: "users_id" });
+
 
 module.exports = users;

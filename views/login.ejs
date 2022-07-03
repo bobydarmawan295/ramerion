@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css" />
-    <link rel="stylesheet" href="assets/css/app.css" />
-    <link rel="stylesheet" href="assets/css/pages/auth.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="asset/css/style2.css" />
   </head>
-
-  <body>
-    <div id="auth">
-      <div class="row h-100">
-        <div class="col-lg-5 col-12">
-          <div id="auth-left">
-            <div class="auth-logo">
-              <a href="#"><img src="assets/images/logo/Group.png" alt="Logo" /></a>
-            </div>
-            <!-- <h1 class="auth-title">Log in.</h1> -->
-            <p class="auth-subtitle mb-5">Silahkan Login terlebih dahulu.</p>
-
-            <form method="POST" action="/auth/login">
-              <div class="form-group position-relative has-icon-left mb-4">
-                <input type="text" name="username" class="form-control form-control-xl" placeholder="Username" autofocus required/>
-                <div class="form-control-icon">
-                  <i class="bi bi-person"></i>
+  <body class="img js-fullheight" style="background-image: url(asset/img/bg-login.jpg)">
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="login-wrap p-0 mt-5">
+              <h3 class="mb-4 text-center">Masuk</h3>
+              <form action="#" class="signin-form">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Username" required />
                 </div>
-              </div>
-              <div class="form-group position-relative has-icon-left mb-4">
-                <input type="password" name="password" class="form-control form-control-xl" placeholder="Password" required/>
-                <div class="form-control-icon">
-                  <i class="bi bi-shield-lock"></i>
+                <div class="form-group">
+                  <input id="password-field" type="password" class="form-control" placeholder="Password" required />
+                  <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                 </div>
-              </div>
-              <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
-            </form>
-            <div class="text-center mt-5 text-lg fs-4">
-              <p class="text-gray-600">Anda Mahasiswa? <a href="/auth/register" class="font-bold">Klik</a>.</p>
+                <div class="form-group">
+                  <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                </div>
+                <div class="form-group d-md-flex">
+                  <div class="w-50">
+                    <label class="checkbox-wrap checkbox-primary"
+                      >Remember Me
+                      <input type="checkbox" checked />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="w-50 text-md-right">
+                    <a href="#" style="color: #fff">Forgot Password</a>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-        <div class="col-lg-7 d-none d-lg-block">
-          <div id="auth-right"></div>
-        </div>
       </div>
-    </div>
+    </section>
+
+    <script src="/temp/asset/js/jquery.min.js"></script>
+    <script src="/temp/asset/js/popper.js"></script>
+    <script src="/temp/asset/js/bootstrap.min.js"></script>
+    <script src="/temp/asset/js/main.js"></script>
   </body>
 </html>

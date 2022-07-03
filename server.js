@@ -6,12 +6,13 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 dotenv.config();
+
 const auth = require("./routes/auth");
 const blog = require("./routes/blog");
 const forum= require("./routes/forum");
 const ecommerce= require("./routes/ecommerce");
 
-const { isDosen, isAdmin , checkUser } = require(`./middleware/authToken`);
+const { isMahasiswa, isAdmin , isPenjual, checkUser } = require(`./middleware/authToken`);
 
 
 app.use(bodyParser.json());
@@ -31,10 +32,11 @@ app.use('/forum', forum);
 
 //--------------------------------
 
-// app.get("/", (req, res) => {
-//     res.render("index", { dasbordaktif: "active", rpsaktif: "" });
- 
-// });
+app.get("/", (req, res) => {
+    const token = req.cookies.token;
+    if (!token) return res.redirect('/auth/login')
+    res.render("index", { dasbordaktif: "active", rpsaktif: "" });
+});
 
 //lihat daftar user
 // app.get("/user", controller.users.retrieveAll);
@@ -51,10 +53,10 @@ app.use('/forum', forum);
 //     res.render("eror500");
 //   });
 
-// //----------------------------------
-// app.use("/", (req, res) => {
-//   res.render("eror404");
-// });
+//----------------------------------
+app.use("/", (req, res) => {
+  res.render("eror404");
+});
 
 app.listen(port, () => {
   console.log(`Server Sedang Berjalan di http://localhost:${port}`);

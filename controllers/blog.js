@@ -7,7 +7,7 @@ controller.getAllBlog = async (req, res) => {
     try {
       await model.blog
         .findAll({
-          attributes: ['id','user_id','judul','konten'],
+          attributes: ['id','user_id','judul','summary', 'konten'],
           // group: ['user_id']
           // raw: true,
         })
@@ -36,7 +36,7 @@ controller.getBlogById= async (req, res) => {
     try {
       await model.blog
         .findOne({
-          attributes: ["id", "user_id", "judul", "konten"],
+          attributes: ['id','user_id','judul','summary', 'konten'],
           where: {
             id: req.params.id,
           },
@@ -64,11 +64,12 @@ controller.getBlogById= async (req, res) => {
 
 controller.addBlog = async (req, res) => {
     try {
-        const { user_id, kategori_id,judul, konten } = req.body;
+        const { user_id, kategori_id,judul,summary, konten } = req.body;
         await model.blog.create({
           user_id: user_id,
           kategori_id: kategori_id,
           judul: judul,
+          summary: summary,
           konten: konten,
         });
         res.status(200).json({
@@ -88,6 +89,7 @@ controller.updateBlog = async (req, res) => {
           user_id: user_id,
           kategori_id: kategori_id,
           judul: judul,
+          summary: summary,
           konten: konten
         },
         {
@@ -105,26 +107,26 @@ controller.updateBlog = async (req, res) => {
     }
   };
 
-  controller.deleteBlog = async function(req, res){
-    try {
-        await model.blog.destroy({
-          where: {
-            id: req.params.id,
-          },
-        });
-        res.status(200).json({
-          message: 'berhasil hapus blog',
-        })
-      } catch (error) {
-        res.json({ message: error.message });
-      }
+controller.deleteBlog = async function(req, res){
+  try {
+      await model.blog.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
+      res.status(200).json({
+        message: 'berhasil hapus blog',
+      })
+    } catch (error) {
+      res.json({ message: error.message });
+    }
 }
 
-controller.getAllBlog = async (req, res) => {
+controller.getAllComment = async (req, res) => {
   try {
     await model.komentar_blog
       .findAll({
-        attributes: ['id','user_id','judul','konten'],
+        attributes: ['id','blog_id','user_id','komentar'],
         // group: ['user_id']
         // raw: true,
       })
@@ -132,7 +134,7 @@ controller.getAllBlog = async (req, res) => {
         if (result.length > 0) {
           // res.render("blog/allBlog", { items: result ,dasbordaktif: "", rpsaktif: "active" });
           res.status(200).json({
-              message: 'mendapat data blog',
+              message: 'mendapat data komentar',
               data: result
           })
         } else {
@@ -148,8 +150,9 @@ controller.getAllBlog = async (req, res) => {
     });
   }
 };
+
   
-controller.tambahKomentarBlog = async function(req, res){
+controller.addBlogComment = async function(req, res){
 
     const { blog_id, user_id,komentar } = req.body;
 
@@ -168,17 +171,35 @@ controller.tambahKomentarBlog = async function(req, res){
 
 }
 
-controller.deleteKomentarBlog = async (req, res) => {
+controller.deleteBlogComment= async (req, res) => {
     try {
       await model.komentar_blog.destroy({
         where: {
           id: req.params.id,
         },
       });
+      res.status(200).json({
+        message: 'berhasil hapus comment',
+      })
     } catch (error) {
       res.json({ message: error.message });
     }
   };
+
+  controller.deleteComment = async function(req, res){
+    try {
+        await model.model_komentar.destroy({
+          where: {
+            id: req.params.id,
+          },
+        });
+        res.status(200).json({
+          message: 'berhasil hapus comment',
+        })
+      } catch (error) {
+        res.json({ message: error.message });
+      }
+  }
 
 
 module.exports = controller;

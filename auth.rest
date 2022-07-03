@@ -1,0 +1,20 @@
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+   "name": "daffa",
+    "username" : "illios",
+    "password" : "123",
+    "confPassword" : "123",
+    "type": "M"
+} 
+
+
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username" : "umibozu",
+    "password" : "123"
+} 

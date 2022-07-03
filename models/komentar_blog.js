@@ -38,9 +38,9 @@ const komentar_blog = sequelize.define('komentar_blog', {
 
 },{
     tableName: 'komentar_blog',
-    timestamps: true,
+    timestamps: false,
     // updatedAt: 'updated_at',
-    createdAt: 'created_at'
+    // createdAt: 'created_at'
 });
 
 module.exports = komentar_blog;

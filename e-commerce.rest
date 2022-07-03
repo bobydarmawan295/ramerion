@@ -1,0 +1,52 @@
+###
+GET http://localhost:3000/ecommerce/
+
+###
+GET http://localhost:3000/ecommerce/1
+
+###
+POST http://localhost:3000/ecommerce/addProduk
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "id_kategori": 1,
+    "nama": "baju",
+    "deskripsi": "deskripsi",
+    "rate": 4,
+    "hargabefore": 20000,
+    "hargaafter": 15000
+} 
+
+###
+PUT http://localhost:3000/ecommerce/updateProduk/1
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "id_kategori": 1,
+    "nama": "celana",
+    "deskripsi": "celana jeans",
+    "rate": 4,
+    "hargabefore": 200000,
+    "hargaafter": 15000
+} 
+###
+DELETE http://localhost:3000/ecommerce/deleteProduk/2
+
+###
+GET http://localhost:3000/ecommerce/
+
+###
+GET http://localhost:3000/ecommerce/1/getCart
+
+###
+POST http://localhost:3000/ecommerce/addCart
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "produk_id": 1,
+    "jumlah": 4,
+    "status": "gagal"
+} 

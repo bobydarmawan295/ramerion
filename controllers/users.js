@@ -61,8 +61,7 @@ controller.register = async function (req, res) {
 controller.tampillogin = async function (req, res) {
   const token = req.cookies.token;
   if (token) return res.redirect('/');
-  
-  res.render("auth-login");
+  res.render("login");
 }
 
 controller.login = async function (req, res) {

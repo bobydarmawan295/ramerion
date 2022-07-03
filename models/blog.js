@@ -33,8 +33,13 @@ const blog = sequelize.define('blog', {
         type : DataTypes.STRING,
         allowNull : false
     },
+    summary: {
+        type : DataTypes.TEXT,
+        allowNull : false
+
+    },
     konten : {
-        type : DataTypes.STRING,
+        type : DataTypes.TEXT,
         allowNull : false
 
     },
@@ -47,7 +52,7 @@ const blog = sequelize.define('blog', {
     tableName: 'blog',
     timestamps: false,
     // updatedAt: 'updated_at',
-    // createdAt: 'created_at'
+    createdAt: 'created_at'
 });
 
 module.exports = blog;

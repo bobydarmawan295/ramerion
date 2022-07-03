@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 dotenv.config();
+const multer = require('multer')
 
 const auth = require("./routes/auth");
 const blog = require("./routes/blog");
@@ -13,7 +14,7 @@ const forum= require("./routes/forum");
 const ecommerce= require("./routes/ecommerce");
 
 const { isPenjual, isAdmin , checkUser } = require(`./middleware/authToken`);
-
+const { MulterError } = require("multer");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

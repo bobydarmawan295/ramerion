@@ -2,6 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/conn");
 const users = require("./users");
 const komentar_blog = require("./komentar_blog");
+const kategori_blog = require("./kategori_blog");
 
 const blog = sequelize.define('blog', {
 
@@ -14,7 +15,7 @@ const blog = sequelize.define('blog', {
     user_id:
     {
         type : DataTypes.BIGINT,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: users,
           key: 'id'
@@ -29,6 +30,10 @@ const blog = sequelize.define('blog', {
     judul : {
         type : DataTypes.STRING,
         allowNull : false
+    }, 
+    gambar : {
+        type : DataTypes.BLOB,
+        allowNull : true
     },
     summary: {
         type : DataTypes.TEXT,
@@ -54,5 +59,8 @@ const blog = sequelize.define('blog', {
 
 blog.hasMany(komentar_blog,{ foreignKey: "blog_id" });
 komentar_blog.belongsTo(blog);
+
+// blog.hasOne(kategori_blog,{ foreignKey: "kategori_id" });
+// kategori_blog.belongsTo(blog);
 
 module.exports = blog;

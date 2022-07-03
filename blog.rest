@@ -5,6 +5,10 @@ GET http://localhost:3000/blog/
 GET http://localhost:3000/blog/2
 
 ###
+
+GET http://localhost:3000/blog/addBlog
+
+###
 POST http://localhost:3000/blog/addBlog
 Content-Type: application/json
 

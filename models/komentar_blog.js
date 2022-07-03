@@ -29,6 +29,11 @@ const komentar_blog = sequelize.define('komentar_blog', {
           key: 'id'
         }
     },
+    userNama:
+    {
+        type : DataTypes.STRING,
+        allowNull: false
+    },
     komentar : {
         type : DataTypes.TEXT
     },

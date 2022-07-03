@@ -41,12 +41,13 @@
                   <div class="row">
                     <div class="col-12 mb-4 mb-6">
                       <h3>Komentar</h3>
-                      <form>
+                      <form action="/blog/addComment" method="post"> 
                           <div class="mb-3">
                             <div class="form-floating">
                               <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                               <label for="floatingTextarea">Comments</label>
                             </div>
+                            <input type="hidden" name="namaUser" value="<%= nama %>">
                           </div>
                           <button style="float: right;" type="submit" class="btn btn-primary">Submit</button>
                       </form>

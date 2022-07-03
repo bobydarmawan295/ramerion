@@ -35,8 +35,8 @@ controller.tampilregister = async function (req, res) {
 }
 
 controller.register = async function (req, res) {
-  const { name, username, password, role } = req.body;
-  // if (password !== confPassword) return res.status(400).json({ msg: "Password dan Confirm Password tidak cocok" });
+  const { name, username, password,confPassword, role } = req.body;
+  if (password !== confPassword) return res.status(400).json({ msg: "Password dan Confirm Password tidak cocok" });
   const salt = await bcrypt.genSalt();
   const hashPassword = await bcrypt.hash(password, salt);
 

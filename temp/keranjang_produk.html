@@ -97,101 +97,59 @@
               <div class="card mb-2">
                 <div class="card-body p-2 p-sm-3">
                   <div class="media forum-item">
-                    <div class="row">
-                        <div class="col-4 mb-4 mt-6" >
-                            <h2>Keranjang Belanja</h2>
-                        
-                        </div>
-                        <div class="col-12">
-                            
-                            <table class="table table-borderless">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Produk</th>
-                                    <th scope="col">Jumlah Produk</th>
-                                    <th scope="col">Harga</th>
-                                    <th></th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>
-                                     <div class="row">
-                                        <div class="col-3">
-                                            <img src="asset/img/sepatu (2).jpg" class="rounded float-start" alt="..." style="width: 10rem;">
-                                        </div>
-                                     </div>
-                                     <div class="row text-center">
-                                        <div class="col-6 mr-5">
-                                            <h6>Sepatu Satu</h6>
-                                        </div>
-                                     </div>
-                                    </td>
-                                    <td>
-                                        <div class="qty">
-                                        <span class="minus bg-dark" onclick="handleCounterMin1()">-</span>
-                                        <input class="count" type="text" id="counter1" value="1" min="1" max="100">
-                                        <span class="plus bg-dark" onclick="handleCounterPlus1()">+</span>
-                                        </div>
-                                        <script>
-                                            const counter1 = document.getElementById("counter1");
-                                            let counterValue1= counter.value;
-            
-                                            function handleCounterPlus1(){
-                                                counter1.value = ++counter1.value;
-                                            }
-            
-                                            function handleCounterMin1(){
-                                                counter1.value = --counter1.value;
-                                            }     
-                                        </script>
-                                    </td>
-                                    <td>Rp. 25000</td>
-                                    <td>X</td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                     <div class="row">
-                                        <div class="col-3">
-                                            <img src="asset/img/sepatu (2).jpg" class="rounded float-start" alt="..." style="width: 10rem;">
-                                        </div>
-                                     </div>
-                                     <div class="row text-center">
-                                        <div class="col-6 mr-5">
-                                            <h6>Sepatu Satu</h6>
-                                        </div>
-                                     </div>
-                                    </td>
-                                    <td>
-                                        <div class="qty">
-                                        <span class="minus bg-dark" onclick="handleCounterMin()">-</span>
-                                        <input class="count" type="text" id="counter" value="1" min="1" max="100">
-                                        <span class="plus bg-dark" onclick="handleCounterPlus()">+</span>
-                                        </div>
-                                        <script>
-                                            const counter = document.getElementById("counter");
-                                            let counterValue = counter.value;
-            
-                                            function handleCounterPlus(){
-                                                counter.value = ++counter.value;
-                                            }
-            
-                                            function handleCounterMin(){
-                                                counter.value = --counter.value;
-                                            }     
-                                        </script>  
-                                    </td>
-                                    <td>Rp. 25000</td>
-                                    <td>X</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <div class="col-auto position-absolute bottom-0 end-0 mb-5 " style="margin-right: 10px;">
-                                <span>Total Belanja : Rp. 50.000 </span>
-                                <button type="button" class="btn btn-success">Checkout</button>
-                            </div>
-                        </div>
+                   <div class="row">
+                    <div class="col-md-2 mb-2 mt-4" >
+                      <img class="img-fluid"src="asset/img/sepatu (2).jpg" width="100%" alt="..." />
                     </div>
+                    <div class="col-xl-4  mt-4" style="margin-left:10px" >
+                      <h6>Sepatu Adidas</h6>
+                      <span>Sepatu Olahraga Original</span>
+                      <div class="col-md-4 mt-2">
+                        <div class="input-group md-4 mb-3">
+                          <span class="input-group-text" id="basic-addon1">Qty</span>
+                          <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2 mt-4">
+                      <span>Rp 2,149,000</span>
+                    </div>
+                    
+                    <div class="col-md-2">
+                      <h5>Summary</h5>
+                      <span><strong>Subtotal</strong></span> </br>
+                      <span>Rp 2,149,000</span> </br>
+                      <span><strong>Pajak (10%)</strong></span> </br>
+                      <span>Rp 214,900</span> 
+                    <hr>
+                    <span><strong>Total</strong></span> </br>
+                    <span>Rp 3,449,000</span>
+                  <hr>
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-dark rounded-pill" type="button">Checkout</button>
+                  </div>
+                  </div>
+                   </div>
+                   <div class="row">
+                    <div class="col-md-2 mb-2 mt-2" >
+                      <img class="img-fluid"src="asset/img/sepatu (2).jpg" width="100%" alt="..." />
+                    </div>
+                    <div class="col-xl-4  mt-2" style="margin-left:10px" >
+                      <h6>Sepatu Adidas</h6>
+                      <span>Sepatu Olahraga Original</span>
+                      <div class="col-md-4 mt-2">
+                        <div class="input-group md-4 mb-3">
+                          <span class="input-group-text" id="basic-addon1">Qty</span>
+                          <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2 mt-2">
+                      <span>Rp 2,149,000</span>
+                    </div>
+                    
+  
+                   </div>
                   </div>
               </div>
               

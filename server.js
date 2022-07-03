@@ -6,6 +6,10 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 dotenv.config();
+const auth = require("./routes/auth");
+const blog = require("./routes/blog");
+const forum= require("./routes/forum");
+const ecommerce= require("./routes/ecommerce");
 
 const { isDosen, isAdmin , checkUser } = require(`./middleware/authToken`);
 
@@ -19,15 +23,11 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("*", checkUser);
-
-const auth = require("./routes/auth");
 app.use("/auth", auth);
-
-const blog = require("./routes/blog");
 app.use('/blog', blog);
 
-const ecommerce= require("./routes/ecommerce");
 app.use('/ecommerce', ecommerce);
+app.use('/forum', forum);
 
 //--------------------------------
 

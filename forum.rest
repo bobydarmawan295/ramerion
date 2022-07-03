@@ -1,0 +1,48 @@
+###
+GET http://localhost:3000/forum/
+
+###
+GET http://localhost:3000/forum/1
+
+
+###
+POST http://localhost:3000/forum/addForum
+Content-Type: application/json
+
+{
+     "user_id": 1,
+     "judul" : "menurunkan berat badan",
+     "konten": "cara menurunkan berat badan"
+} 
+
+
+###
+PUT http://localhost:3000/forum/updateForum/1
+Content-Type: application/json
+
+{
+     "user_id": 1,
+     "judul" : "data mining",
+     "konten": "cara nambang data"
+} 
+
+
+###
+DELETE http://localhost:3000/forum/deleteForum/1
+
+###
+GET http://localhost:3000/forum/comment/all
+
+###
+POST http://localhost:3000/forum/addComment
+Content-Type: application/json
+
+{
+     "forum_id": 2,
+     "user_id": 1,
+     "komentar" : "sangat menarik 2"
+} 
+
+###
+DELETE http://localhost:3000/forum/deleteComment/2
+   

@@ -6,19 +6,19 @@ const controller = {};
 
 controller.getAllForum = async (req, res) => {
     try {
-      await model.forum.blog
+      await model.forum
         .findAll({
           attributes: ['id','user_id','judul','konten'],
-          group: ['id_kategori']
+          // group: ['id_kategori']
           // raw: true,
         })
         .then((result) => {
           if (result.length > 0) {
-            res.render("blog/allProduk", { items: result ,dasbordaktif: "", rpsaktif: "active" });
-            // res.status(200).json({
-            //     message: 'mendapat data dosen',
-            //     data: result
-            // })
+            // res.render("blog/allProduk", { items: result ,dasbordaktif: "", rpsaktif: "active" });
+            res.status(200).json({
+                message: 'mendapat data forum',
+                data: result
+            })
           } else {
             res.status(404).json({
                 message: "data tidak ada",
@@ -33,36 +33,6 @@ controller.getAllForum = async (req, res) => {
     }
 }
 
-controller.detailForum = async function(req, res){
-
-    try {
-        await model.forum.blog
-          .findAll({
-            attributes: ['id','user_id','judul','konten'],
-            group: ['id_kategori']
-            // raw: true,
-          })
-          .then((result) => {
-            if (result.length > 0) {
-              res.render("blog/allProduk", { items: result ,dasbordaktif: "", rpsaktif: "active" });
-              // res.status(200).json({
-              //     message: 'mendapat data dosen',
-              //     data: result
-              // })
-            } else {
-              res.status(404).json({
-                  message: "data tidak ada",
-                  data: [],
-              });
-            }
-          });
-      } catch (error) {
-        res.status(404).json({
-          message: error,
-        });
-      }
-
-};
 
 controller.getForumById= async (req, res) => {
     try {
@@ -75,7 +45,11 @@ controller.getForumById= async (req, res) => {
         })
         .then((result) => {
           if (result) {
-            res.render("blog/editProduk", { items: result,dasbordaktif: "", rpsaktif: "active"  });
+            // res.render("blog/editProduk", { items: result,dasbordaktif: "", rpsaktif: "active"  });
+            res.status(200).json({
+              message: 'mendapat data forum',
+              data: result
+          })
           } else {
             res.status(404).json({
               message: "data tidak ada",
@@ -98,6 +72,9 @@ controller.getForumById= async (req, res) => {
             judul: judul,
             konten: konten,
         });
+        res.status(200).json({
+          message: 'berhasil menambahkan forum'
+      })
         //   res.redirect("/dosen/courses");
       } catch (error) {
         res.json({ message: error.message });
@@ -120,6 +97,9 @@ controller.updateForum = async (req, res) => {
           },
         }
       );
+      res.status(200).json({
+        message: 'berhasil edit blog',
+      })
     } catch (error) {
       res.json({ message: error.message });
       // res.redirect("/dosen/add-course");
@@ -133,36 +113,74 @@ controller.deleteForum= async (req, res) => {
           id: req.params.id,
         },
       });
+      res.status(200).json({
+        message: 'berhasil happus data',
+      })
     } catch (error) {
       res.json({ message: error.message });
     }
   };
 
+  controller.getAllComment = async (req, res) => {
+    try {
+      await model.komentar_forum
+        .findAll({
+          attributes: ['id','forum_id','user_id','komentar'],
+          // group: ['user_id']
+          // raw: true,
+        })
+        .then((result) => {
+          if (result.length > 0) {
+            // res.render("blog/allBlog", { items: result ,dasbordaktif: "", rpsaktif: "active" });
+            res.status(200).json({
+                message: 'mendapat data komentar',
+                data: result
+            })
+          } else {
+            res.status(404).json({
+                message: "data tidak ada",
+                data: [],
+            });
+          }
+        });
+    } catch (error) {
+      res.status(404).json({
+        message: error,
+      });
+    }
+  };
 
-  controller.tambahKomentarForum = async function(req, res){
 
-    const { user_id,judul,konten} = req.body;
+  controller.addForumComment = async function(req, res){
+
+    const { user_id,forum_id,komentar} = req.body;
 
     try {
         await model.komentar_forum.create({
-            user_id: user_id,
-            judul: judul,
-            konten: konten,
+          forum_id: forum_id,
+          user_id: user_id,
+          komentar: komentar
         });
-        res.redirect('back');
+        res.status(200).json({
+          message: 'berhasil menambah data komentar',
+        })
+        // res.redirect('back');
     } catch (error) {
         console.log(error);
     }
 
 }
 
-controller.deleteKomentarBlog = async (req, res) => {
+controller.deleteForumComment = async (req, res) => {
     try {
       await model.komentar_forum.destroy({
         where: {
           id: req.params.id,
         },
       });
+      res.status(200).json({
+        message: 'berhasil hapus data komentar',
+      })
     } catch (error) {
       res.json({ message: error.message });
     }

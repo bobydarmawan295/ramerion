@@ -3,6 +3,8 @@ const { Op, QueryTypes  } = require("sequelize");
 // const sequelize = model.dbconfig;
 const controller = {};
 
+
+
 controller.getAllBlog = async (req, res) => {
     try {
       await model.blog
@@ -77,17 +79,17 @@ controller.getBlogById= async (req, res) => {
 
 controller.addBlog = async (req, res) => {
     try {
-        const { user_id, kategori_id,judul,summary, konten } = req.body;
+        const { user_id, kategori_id,judul, summary, konten } = req.body;
         await model.blog.create({
-          user_id: user_id,
+          user_id : 1,
           kategori_id: kategori_id,
           judul: judul,
           summary: summary,
           konten: konten,
         });
-        res.status(200).json({
-          message: 'berhasil menambahkan blog',
-        })
+        // res.status(200).json({
+        //   message: 'berhasil menambahkan blog',
+        // })
         //   res.redirect("/dosen/courses");
       } catch (error) {
         res.json({ message: error.message });
@@ -213,6 +215,34 @@ controller.deleteBlogComment= async (req, res) => {
         res.json({ message: error.message });
       }
   }
+
+  controller.getBlog= async (req, res) => {
+    try {
+      await model.kategori_blog
+        .findAll({
+          attributes: ["id", "nama"],
+        })
+        
+        .then((result) => {
+          if (result.length > 0) {
+            res.render("blog/addBlog", { items: result });
+          //  res.status(200).json({
+          //       message: 'mendapat data dosen',
+          //       data : result
+          //   })
+          } else {
+            res.status(200).json({
+              message: "data tidak ada",
+              data: [],
+            });
+          }
+        });
+    } catch (error) {
+      res.status(404).json({
+        message: error,
+      });
+    }
+  };
 
 
 module.exports = controller;

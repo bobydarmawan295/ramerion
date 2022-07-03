@@ -55,11 +55,11 @@ controller.getBlogById= async (req, res) => {
         })
         .then((result) => {
           if (result) {
-            // res.render("blog/detailBlog", { items: result,blogActive: "active", forumActive: "", ecommerceActive:"" });
-            res.status(200).json({
-              message: 'mendapat id blog',
-              data: result
-            })
+            res.render("blog/detailBlog", { items: result,blogActive: "active", forumActive: "", ecommerceActive:"" });
+            // res.status(200).json({
+            //   message: 'mendapat id blog',
+            //   data: result
+            // })
           } else {
             res.status(404).json({
               message: "data tidak ada",

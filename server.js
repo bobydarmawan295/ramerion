@@ -32,6 +32,8 @@ app.use('/forum', forum);
 //--------------------------------
 
 app.get("/", (req, res) => {
+    const token = req.cookies.token;
+    if (!token) return res.redirect('/auth/login')
     res.render("index", { dasbordaktif: "active", rpsaktif: "" });
 });
 

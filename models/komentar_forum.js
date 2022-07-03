@@ -40,9 +40,9 @@ const komentar_forum = sequelize.define('komentar_forum', {
 
 },{
     tableName: 'komentar_forum',
-    timestamps: true,
+    timestamps: false,
     // updatedAt: 'updated_at',
-    createdAt: 'created_at'
+    // createdAt: 'created_at'
 });
 
 module.exports = komentar_forum;

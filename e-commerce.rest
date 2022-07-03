@@ -41,7 +41,7 @@ GET http://localhost:3000/ecommerce/
 GET http://localhost:3000/ecommerce/1/getCart
 
 ###
-POST http://localhost:3000/ecommerce/addCart
+POST http://localhost:3000/ecommerce/1/cart/addCart
 Content-Type: application/json
 
 {
@@ -50,3 +50,7 @@ Content-Type: application/json
     "jumlah": 4,
     "status": "gagal"
 } 
+
+
+###
+DELETE http://localhost:3000/ecommerce/deleteCart/1

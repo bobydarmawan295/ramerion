@@ -37,12 +37,11 @@ const cart = sequelize.define('cart', {
         type : DataTypes.DATE
     },
 
-
 },{
     tableName: 'cart',
-    timestamps: true,
+    timestamps: false,
     // updatedAt: 'updated_at',
-    createdAt: 'created_at'
+    // createdAt: 'created_at'
 });
 
 module.exports = cart;

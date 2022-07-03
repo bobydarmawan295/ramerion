@@ -157,12 +157,11 @@ controller.getAllCart = async function(req, res){
         });
       }
     };
-
   
   controller.addCart = async (req, res) => {
       try {
           const { user_id,produk_id, jumlah, status} = req.body;
-          await model.produk.create({
+          await model.cart.create({
               user_id: user_id,
               produk_id: produk_id,
               jumlah: jumlah,
@@ -180,11 +179,14 @@ controller.getAllCart = async function(req, res){
 
 controller.deleteCart = async function(req, res){
     try {
-        await model.produk.destroy({
+        await model.cart.destroy({
           where: {
             id: req.params.id,
           },
         });
+        res.status(200).json({
+          message: 'berhasil hapus id',
+      })
       } catch (error) {
         res.json({ message: error.message });
       }

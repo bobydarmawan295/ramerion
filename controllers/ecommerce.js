@@ -3,6 +3,41 @@ const { Op, QueryTypes  } = require("sequelize");
 const sequelize = model.dbconfig;
 const controller = {};
 
+controller.jualProduk = async (req, res) => { 
+    
+    const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+
+    res.render("e-commerce/jualProduk", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+}
+
+controller.daftarBarang = async (req, res) => { 
+    
+    const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+
+    res.render("e-commerce/daftarBarang", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+}
+
+controller.pesananPelanggan = async (req, res) => { 
+    
+    const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+
+    res.render("e-commerce/pesananPelanggan", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+}
+
+controller.barangTerjual = async (req, res) => { 
+    
+    const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+
+    res.render("e-commerce/barangTerjual", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+}
+
+controller.riwayat = async (req, res) => { 
+    
+    const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+
+    res.render("e-commerce/riwayat", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+}
+
 controller.getAllProduk = async (req, res) => {
     try {
       await model.produk
@@ -45,11 +80,11 @@ controller.getProdukById= async (req, res) => {
         })
         .then((result) => {
           if (result) {
-            // res.render("blog/editProduk", { items: result,dasbordaktif: "", rpsaktif: "active"  });
-            res.status(200).json({
-              message: 'mendapat id produk',
-              data: result
-          })
+            res.render("blog/editProduk", { items: result,dasbordaktif: "", rpsaktif: "active"  });
+          //   res.status(200).json({
+          //     message: 'mendapat id produk',
+          //     data: result
+          // })
           } else {
             res.status(404).json({
               message: "data tidak ada",

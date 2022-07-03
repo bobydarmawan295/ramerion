@@ -2,7 +2,7 @@
 GET http://localhost:3000/forum/
 
 ###
-GET http://localhost:3000/forum/1
+GET http://localhost:3000/forum/2
 
 
 ###

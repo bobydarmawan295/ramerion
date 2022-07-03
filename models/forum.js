@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/conn");
+const komentar_forum = require("./komentar_forum");
 const users = require("./users");
 const forum = sequelize.define('forum', {
 
@@ -37,5 +38,8 @@ const forum = sequelize.define('forum', {
     // updatedAt: 'updated_at',
     // createdAt: 'created_at'
 });
+
+forum.hasMany(komentar_forum,{ foreignKey: "forum_id" });
+komentar_forum.belongsTo(forum);
 
 module.exports = forum;

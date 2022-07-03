@@ -1,0 +1,63 @@
+<%- include('atas', {judul: 'Barang Terjual'}) %>
+
+    <!-- End Of Navbar  -->
+    <div class="container d-md-flex align-items-stretch">
+      <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4">Barang Terjual</h2>
+        <div class="row">
+          <div class="col-12 mb-4 mt-4">
+            <div class="card mb-4">
+              <div class="card-header">Berikut, data barang yang terjual</div>
+              <div class="card-body">
+                <table id="datatableSimple" class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id Barang</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Jumlah Terjual</th>
+                      <th scope="col">Jumlah Harga</th>
+                      <th scope="col">Waktu</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Brg 001</th>
+                      <td>Sepatu Nike</td>
+                      <td>5</td>
+                      <td>Rp. 125000</td>
+                      <td>10:45:16-Senin/23 Jan</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">Brg 002</th>
+                      <td>Sepatu Nike</td>
+                      <td>5</td>
+                      <td>Rp. 125000</td>
+                      <td>10:45:16-Senin/23 Jan</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include('sidebar') %>
+    </div>
+
+    <footer class="text-center text-white" style="background-color: #f1f1f1">
+      <!-- Grid container -->
+      <div class="container pt-4"></div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">Ramerion.id</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+<%- include('bawah') %>

@@ -44,7 +44,7 @@ controller.getBlogById= async (req, res) => {
             {
               model: model.komentar_blog,
               attributes: ["id", "blog_id","user_id","komentar"],
-              required: true,
+              required: false,
             },
             // {
             //   model: model.users,
@@ -58,8 +58,8 @@ controller.getBlogById= async (req, res) => {
         })
         .then((result) => {
           if (result) {
-            // res.render("blog/detailBlog", { items: result,blogActive: "active", forumActive: "", ecommerceActive:"" });
-            res.send(result)
+            res.render("blog/detailBlog", { items: result, blogActive: "active", forumActive: "", ecommerceActive:"" });
+            // res.send(result)
             // res.status(200).json({
             //   message: 'mendapat id blog',
             //   data: result

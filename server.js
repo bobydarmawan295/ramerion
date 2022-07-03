@@ -31,10 +31,9 @@ app.use('/forum', forum);
 
 //--------------------------------
 
-// app.get("/", (req, res) => {
-//     res.render("index", { dasbordaktif: "active", rpsaktif: "" });
- 
-// });
+app.get("/", (req, res) => {
+    res.render("index", { dasbordaktif: "active", rpsaktif: "" });
+});
 
 //lihat daftar user
 // app.get("/user", controller.users.retrieveAll);

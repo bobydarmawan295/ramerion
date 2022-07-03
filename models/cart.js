@@ -37,7 +37,6 @@ const cart = sequelize.define('cart', {
         type : DataTypes.DATE
     },
 
-
 },{
     tableName: 'cart',
     timestamps: false,

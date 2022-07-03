@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="asset/css/style.css" />
 
-    <title>Hello, world!</title>
+    <title>Ramerion - E-commerce</title>
   </head>
   <body>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
@@ -99,57 +99,23 @@
               <div class="card mb-2">
                 <div class="card-body p-2 p-sm-3">
                   <div class="media forum-item">
-                    <div class="row">
-                        <div class="col-4 mb-4 mt-6"  >
-                            <img src="asset/img/sepatu (2).jpg" class="rounded float-start" alt="..." style="width: 18rem;">
-                        </div>
-                        <div class="col-auto mt-4">
-                            <h2 class="card-title"><a href="" style="text-decoration:none">Sepatu Satu</a></h2>
-                            <span>$29.00</span>
-                            <div class="col-auto mt-4">
-                              <span>Stock</span>
-                              <h2 class="card-tittle">500</h2>
-                            
-
-                            <div class="col-4 mb-4 mt-4 position-absolute bottom-0 end-0">
-                            <div class="card" style="width: 20rem; margin-top: 10px;">
-                                <div class="card-body">
-                                  <h6 class="card-subtitle mb-2 text-muted">Deskripsi :</h6>
-                                  <form>
-                                    <div class="mb-3">
-                                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                      <div id="emailHelp" class="form-text">Masukkan deskripsi produk (warna,ukuran,dll)</div>
-                                    </div>
-                                  </form>
-                                       <div class="qty mt-5">
-                                        <h6 class="card-subtitle mb-2 text-muted">Jumlah :</h6>
-                                        <span class="minus bg-dark" onclick="handleCounterMin()">-</span>
-                                        <input class="count" type="text" id="counter" value="1" min="1" max="100">
-                                        <span class="plus bg-dark" onclick="handleCounterPlus()">+</span>
-                                          <div class="position-relative">
-                                            <div class="col-auto position-absolute bottom-0 end-0">
-                                                <button type="button" class="btn btn-success">Masukkan Ke Troli</button>
-                                            </div>
-                                        </div>
-                                       </div>               
-                                </div>
-                              </div>
-                            </div>
-                            <script>
-                                const counter = document.getElementById("counter");
-                                let counterValue = counter.value;
-
-                                function handleCounterPlus(){
-                                    counter.value = ++counter.value;
-                                }
-
-                                function handleCounterMin(){
-                                    counter.value = --counter.value;
-                                }     
-                            </script>       
-                        </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-4 mb-4">
+                      <img src="asset/img/sepatu (2).jpg" width="90%" alt="..." />
                     </div>
+                    <div class="col-md-4 mt-5">
+                      <h3>Sepatu Satu</h3>
+                      <span>Sepatu Olahraga Original</span> </br></br>
+                      <span>Rp 2,149,000</span>
+                      <div class="mb-3 mt-2">
+                        <label for="exampleFormControlTextarea1" class="form-label"></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Deskripsi Produk"></textarea>
+                      </div> 
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-dark rounded-pill" type="button">Add To Cart</button>
+                      </div>
                     </div>
+                  </div>
                   </div>
               </div>
               

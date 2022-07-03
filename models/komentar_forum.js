@@ -30,6 +30,10 @@ const komentar_forum = sequelize.define('komentar_forum', {
           key: 'id'
         }
     },
+    gambar:
+    {
+        type : DataTypes.BLOB,
+    },
     komentar : {
         type : DataTypes.TEXT
     },

@@ -10,6 +10,7 @@ controller.getAllBlog = async (req, res) => {
           attributes: ['id','user_id','judul','summary', 'konten'],
           // group: ['user_id']
           // raw: true,
+        
         })
         .then((result) => {
           if (result.length > 0) {

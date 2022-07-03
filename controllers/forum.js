@@ -9,8 +9,7 @@ controller.getAllForum = async (req, res) => {
       await model.forum
         .findAll({
           attributes: ['id','user_id','judul','konten'],
-          // group: ['id_kategori']
-          // raw: true,
+         
         })
         .then((result) => {
           if (result.length > 0) {
@@ -39,17 +38,27 @@ controller.getForumById= async (req, res) => {
       await model.forum
         .findOne({
           attributes: ['id','user_id','judul','konten'],
+          include: [
+            {
+              model: model.komentar_forum,
+              attributes: ["id", "forum_id","user_id","komentar"],
+              required: true,
+            },
+            
+          // group: ['id_kategori']
+          // raw: true,
+          ],
           where: {
             id: req.params.id,
           },
         })
         .then((result) => {
           if (result) {
-            // res.render("blog/editProduk", { items: result,blogActive: "", forumActive: "active", ecommerceActive:""  });
-            res.status(200).json({
-              message: 'mendapat data forum',
-              data: result
-          })
+            res.render("blog/editProduk", { items: result,blogActive: "", forumActive: "active", ecommerceActive:""  });
+          //   res.status(200).json({
+          //     message: 'mendapat data forum',
+          //     data: result
+          // })
           } else {
             res.status(404).json({
               message: "data tidak ada",

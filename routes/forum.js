@@ -10,7 +10,7 @@ router.get("/:id", controller.forum.getForumById);
 router.post("/addForum", controller.forum.addForum);
 router.put("/updateForum/:id", controller.forum.updateForum)
 router.delete("/deleteForum/:id", controller.forum.deleteForum);
-router.get("/comment/all", controller.forum.getAllComment);
+router.get(":id/comment/all", controller.forum.getAllComment);
 router.post("/addComment", controller.forum.addForumComment);
 router.delete("/deleteComment/:id", controller.forum.deleteForumComment);
 

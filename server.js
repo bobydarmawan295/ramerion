@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 dotenv.config();
 
-
 const auth = require("./routes/auth");
 const blog = require("./routes/blog");
 const forum= require("./routes/forum");
@@ -54,10 +53,10 @@ app.get("/", (req, res) => {
 //     res.render("eror500");
 //   });
 
-// //----------------------------------
-// app.use("/", (req, res) => {
-//   res.render("eror404");
-// });
+//----------------------------------
+app.use("/", (req, res) => {
+  res.render("eror404");
+});
 
 app.listen(port, () => {
   console.log(`Server Sedang Berjalan di http://localhost:${port}`);

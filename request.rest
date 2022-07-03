@@ -1,0 +1,30 @@
+###
+GET http://localhost:3000/blog/
+
+###
+POST http://localhost:3000/blog/2
+
+###
+POST http://localhost:3000/blog/addBlog
+Content-Type: application/json
+
+{
+     "user_id": 1,
+     "kategori_id": 3,
+     "judul" : "menurunkan berat badan",
+     "konten": "cara menurunkan berat badan"
+} 
+
+###
+PUT http://localhost:3000/blog/updateBlog/1
+Content-Type: application/json
+
+{
+     "user_id": 1,
+     "kategori_id": 3,
+     "judul" : "data mining",
+     "konten": "cara nambang data"
+} 
+
+###
+DELETE http://localhost:3000/blog/deleteBlog/1

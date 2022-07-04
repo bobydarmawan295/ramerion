@@ -21,6 +21,11 @@ const blog = sequelize.define('blog', {
           key: 'id'
         }
     },
+    user:
+    {
+        type : DataTypes.STRING,
+        allowNull : false
+    },
     kategori_id:
     {
         type : DataTypes.BIGINT,

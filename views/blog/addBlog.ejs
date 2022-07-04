@@ -20,6 +20,8 @@
                       <div class="row">
                         <div class="col-8 mb-4 mt-4">
                             <form action="/blog/addBlog" method="post" onsubmit="success()">
+                                <input type="hidden" name="user" value="<%= nama %>">
+                                <input type="hidden" name="user_id" value="<%= id %>">
                                 <div class="mb-3">
                                   <label for="exampleInputEmail1" class="form-label">Judul</label>
                                   <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ex. Cara Menjadi Wirausaha yang Baik" name="judul">

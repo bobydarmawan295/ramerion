@@ -20,6 +20,9 @@ const komentar_blog = sequelize.define('komentar_blog', {
           key: 'id'
         }
     },
+    user : {
+        type : DataTypes.STRING
+    },
     blog_id:
     {
         type : DataTypes.BIGINT,

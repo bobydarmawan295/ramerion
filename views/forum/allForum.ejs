@@ -82,28 +82,33 @@
                         <div class="collapse" id="collapseExample<%= item.id %>">
                           <div class="col mt-4">
                             <div class="card card-body">
-                              <form action="" method="post">
+                              <form action="/forum/addComment" method="post">
                                 <div class="mb-3">
                                   <label for="exampleFormControlTextarea1" class="form-label">Komentar</label>
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" autofocus></textarea><br>
+                                   <input type="hidden" name="user" value="<%= nama %>">
+                                  <input type="hidden" name="user_id" value="<%= id %>">
+                                <input type="hidden" name="forum_id" value="<%= item.id %>">
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" autofocus name="komentar"></textarea ><br>
                                   <button type="submit" class="btn btn-primary" type="submit">Post!</button>
                                 </div>
                               </form>
                             </div>
                           </div>
+                        <% item.komentar_forums.forEach((data) => { %>
                         <div class="col mt-4">
                           <div class="card card-body">
                             <div class="col-auto">
-                              <h5><a href="#" data-toggle="collapse" class="text-body" style="text-decoration: none">Daffa</a></h5>
+                              <h5><a href="#" data-toggle="collapse" class="text-body" style="text-decoration: none"><%= data.user %></a></h5>
                               <p class="text-secondary">Sistem Informasi - 20</p>
                             </div>
                           <div class="col-12 mb-12 mt-1">
                             <p class="komentar">
-                              Keren banget nih!
+                              <%= data.komentar %>
                             </p>
                           </div>
                           </div>
-                        </div>   
+                        </div>
+                        <% }) %>   
                         </div>
                       </div>
                     </div>

@@ -23,7 +23,7 @@
                         <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="45" alt="User" /></a>
                       </div>
                       <div class="col-auto">
-                        <h5><a href="#" data-toggle="collapse" class="text-body" style="text-decoration: none">Daffa</a></h5>
+                        <h5><a href="#" data-toggle="collapse" class="text-body" style="text-decoration: none"><%= items.user %></a></h5>
                         <p class="text-secondary">Sistem Informasi - 20</p></br>
                       </div>
                       <hr /> </br>
@@ -47,6 +47,7 @@
                               <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="komentar"></textarea>
                               <label for="floatingTextarea">Comments</label>
                             </div>
+                            <input type="hidden" name="user" value="<%= nama %>">
                             <input type="hidden" name="user_id" value="<%= id %>">
                             <input type="hidden" name="blog_id" value="<%= items.id %>">
                           </div>
@@ -59,7 +60,7 @@
                             
                 <% items.komentar_blogs.forEach((data) => { %>
                 <div class="card-body border border-primaryv m-2">
-                  <h5 class="card-title">boby</h5>
+                  <h5 class="card-title"><%= data.user %></h5>
                   <p class="card-subtitle mb-2 text-muted pb-3"><%= data.created_at %></p>
                   <p class="card-text"><%= data.komentar %></p>
                 </div>

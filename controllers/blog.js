@@ -39,15 +39,14 @@ controller.getBlogById= async (req, res) => {
     try {
       await model.blog
         .findOne({
-          attributes: ['id','user_id','judul','summary', 'konten','created_at'],
-         
+          attributes: ['id','user_id','user','judul','summary', 'konten','created_at'],
           include: [
             {
               model: model.komentar_blog,
-              attributes: ["id", "blog_id","user_id","komentar", "created_at"],
+              attributes: ["id", "blog_id","user_id","user","komentar", "created_at"],
               required: false,
               order: [
-                ['created_at', 'DESC']
+                ['id', 'ASC']
               ]
             },
             // {
@@ -84,9 +83,10 @@ controller.getBlogById= async (req, res) => {
 
 controller.addBlog = async (req, res) => {
     try {
-        const { user_id, kategori_id,judul, summary, konten } = req.body;
+        const { user_id, kategori_id,judul, summary, konten, user} = req.body;
         await model.blog.create({
-          user_id : 1,
+          user_id : user_id,
+          user:user,
           kategori_id: kategori_id,
           judul: judul,
           summary: summary,
@@ -146,7 +146,7 @@ controller.getAllComment = async (req, res) => {
   try {
     await model.komentar_blog
       .findAll({
-        attributes: ['id','blog_id','user_id','komentar'],
+        attributes: ['id','blog_id','user_id','user','komentar'],
         // group: ['user_id']
         // raw: true,
       })
@@ -174,12 +174,13 @@ controller.getAllComment = async (req, res) => {
   
 controller.addBlogComment = async function(req, res){
 
-    const { blog_id, user_id,komentar } = req.body;
+    const { blog_id, user_id,komentar,user } = req.body;
 
     try {
         await model.komentar_blog.create({
             blog_id: blog_id,
             user_id: user_id,
+            user: user,
             komentar: komentar
         });
        res.redirect('back');
@@ -246,7 +247,6 @@ controller.deleteBlogComment= async (req, res) => {
       });
     }
   };
-
 
 module.exports = controller;
 

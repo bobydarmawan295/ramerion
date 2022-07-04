@@ -9,10 +9,19 @@ controller.getAllForum = async (req, res) => {
       await model.forum
         .findAll({
           attributes: ['id','user_id','user','konten','created_at'],
+          include: [
+            {
+              model: model.komentar_forum,
+              attributes: ["id", "forum_id","user_id","komentar", "user"],
+              required: false,
+            },
+            
+          // // group: ['id_kategori']
+          // // raw: true,
+          ],
           order: [
             ['created_at', 'DESC']
-        ],
-         
+        ],  
         })
         .then((result) => {
           if (result.length > 0) {
@@ -41,16 +50,7 @@ controller.getForumById= async (req, res) => {
       await model.forum
         .findOne({
           attributes: ['id','user_id','user','konten'],
-          include: [
-            {
-              model: model.komentar_forum,
-              attributes: ["id", "forum_id","user_id","komentar"],
-              required: true,
-            },
-            
-          // group: ['id_kategori']
-          // raw: true,
-          ],
+         
           where: {
             id: req.params.id,
           },
@@ -78,8 +78,9 @@ controller.getForumById= async (req, res) => {
 
   controller.addForum = async (req, res) => {
     try {
-        const { user_id,user,konten} = req.body;
+        const { forum_id,user_id,user,konten} = req.body;
         await model.forum.create({
+            forum_id:forum_id,
             user_id: user_id,
             user: user,
             konten: konten,
@@ -162,18 +163,18 @@ controller.deleteForum= async (req, res) => {
 
   controller.addForumComment = async function(req, res){
 
-    const { user_id,forum_id,komentar} = req.body;
+    const { user_id,forum_id,komentar,user} = req.body;
 
     try {
         await model.komentar_forum.create({
           forum_id: forum_id,
           user_id: user_id,
+          user:user,
           komentar: komentar
         });
-        res.status(200).json({
-          message: 'berhasil menambah data komentar',
-        })
-        // res.redirect('back');
+
+     
+        res.redirect('back');
     } catch (error) {
         console.log(error);
     }

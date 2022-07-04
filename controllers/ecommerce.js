@@ -45,6 +45,32 @@ controller.detailProduk= async (req, res) => {
   res.render("e-commerce/detailProduk", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
 }
 
+controller.detailPembayaran= async (req, res) => { 
+    
+  const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+
+  res.render("e-commerce/detailPembayaran", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+}
+
+
+controller.bayar= async (req, res) => { 
+    
+  const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+
+  res.render("e-commerce/bayar", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+
+}
+
+controller.upload_bukti= async (req, res) => { 
+    
+  const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+  
+  res.render("e-commerce/upload_bukti", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+
+}
+
+
+
 controller.allCart= async (req, res) => { 
     
   const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});

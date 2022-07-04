@@ -8,7 +8,10 @@ controller.getAllForum = async (req, res) => {
     try {
       await model.forum
         .findAll({
-          attributes: ['id','user_id','judul','konten'],
+          attributes: ['id','user_id','user','konten','created_at'],
+          order: [
+            ['created_at', 'DESC']
+        ],
          
         })
         .then((result) => {
@@ -37,7 +40,7 @@ controller.getForumById= async (req, res) => {
     try {
       await model.forum
         .findOne({
-          attributes: ['id','user_id','judul','konten'],
+          attributes: ['id','user_id','user','konten'],
           include: [
             {
               model: model.komentar_forum,
@@ -75,10 +78,10 @@ controller.getForumById= async (req, res) => {
 
   controller.addForum = async (req, res) => {
     try {
-        const { user_id,judul,konten} = req.body;
+        const { user_id,user,konten} = req.body;
         await model.forum.create({
-            user_id: 2,
-            judul: judul,
+            user_id: user_id,
+            user: user,
             konten: konten,
         });
           res.redirect("/forum");
@@ -90,11 +93,11 @@ controller.getForumById= async (req, res) => {
 
 controller.updateForum = async (req, res) => {
     try {
-      const { user_id,judul,konten} = req.body;
+      const { user_id,user,konten} = req.body;
       await model.forum.update(
         {
             user_id: user_id,
-            judul: judul,
+            user: user,
             konten: konten,
         },
         {

@@ -74,10 +74,10 @@ controller.login = async function (req, res) {
 
   const nama = user.name;
   const username = user.username;
-  const role = user.type;
+  const id = user.id;
 
   const token = generateAccessToken({ 
-    username,nama,role
+    username,nama,id
    });
 
   await model.update(
@@ -114,7 +114,7 @@ controller.logout = async function (req, res) {
   );
   res
     .clearCookie("token")
-    .redirect("/auth/login")
+    .redirect("/")
     // .locals = null;
     
   // res.sendStatus(200);

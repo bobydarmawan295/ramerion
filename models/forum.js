@@ -20,9 +20,9 @@ const forum = sequelize.define('forum', {
         }
     },
 
-    judul : {
+    user : {
         type : DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
 
     konten : {
@@ -35,9 +35,9 @@ const forum = sequelize.define('forum', {
 
 },{
     tableName: 'forum',
-    timestamps: false,
-    // updatedAt: 'updated_at',
-    // createdAt: 'created_at'
+    timestamps: true,
+    updatedAt: false,
+    createdAt: 'created_at'
 });
 
 forum.hasMany(komentar_forum,{ foreignKey: "forum_id" });

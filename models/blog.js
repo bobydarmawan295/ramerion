@@ -46,15 +46,15 @@ const blog = sequelize.define('blog', {
 
     },
     created_at : {
-        type : DataTypes.STRING,
-        allowNull : true
+        type : DataTypes.DATE,
+        allowNull :false
     },
 
 }, {
     tableName: 'blog',
-    timestamps: false,
-    // updatedAt: 'updated_at',
-    // createdAt: 'created_at'
+    timestamps: true,
+    updatedAt: false,
+    createdAt: 'created_at'
 });
 
 blog.hasMany(komentar_blog,{ foreignKey: "blog_id" });

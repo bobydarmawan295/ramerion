@@ -41,13 +41,14 @@
                   <div class="row">
                     <div class="col-12 mb-4 mb-6">
                       <h3>Komentar</h3>
-                      <form action="/blog/addComment" method="post"> 
+                      <form action="/blog/addComment/" method="post"> 
                           <div class="mb-3">
                             <div class="form-floating">
-                              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="komentar"></textarea>
                               <label for="floatingTextarea">Comments</label>
                             </div>
-                            <input type="hidden" name="namaUser" value="<%= nama %>">
+                            <input type="hidden" name="user_id" value="<%= id %>">
+                            <input type="hidden" name="blog_id" value="<%= items.id %>">
                           </div>
                           <button style="float: right;" type="submit" class="btn btn-primary">Post</button>
                       </form>
@@ -55,20 +56,15 @@
                   </div>
                   </div>
                 </div>
-         
+                            
+                <% items.komentar_blogs.forEach((data) => { %>
                 <div class="card-body border border-primaryv m-2">
                   <h5 class="card-title">boby</h5>
-                  <h6 class="card-subtitle mb-2 text-muted pb-3">3 Juli 2022, 16.00 PM</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-subtitle mb-2 text-muted pb-3"><%= data.created_at %></p>
+                  <p class="card-text"><%= data.komentar %></p>
                 </div>
-           
-                <div class="card-body border border-primaryv m-2">
-                  <h5 class="card-title">boby</h5>
-                  <h6 class="card-subtitle mb-2 text-muted pb-3">3 Juli 2022, 16.00 PM</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            
+                <% }) %>
+      
                
              
             </div>

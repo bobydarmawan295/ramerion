@@ -31,14 +31,14 @@ const checkUser = (req,res,next) =>{
         } else {
           res.locals.username= decodedToken.username;
           res.locals.nama= decodedToken.nama;
-          res.locals.role= decodedToken.role;
+          res.locals.id= decodedToken.id;
           // console.log(res.locals);
           next();
         }
       });
   }else{
     res.locals.nama= "user";
-    res.locals.role= "M";
+    res.locals.id= 0;
       next()
   }
 }

@@ -39,12 +39,16 @@ controller.getBlogById= async (req, res) => {
     try {
       await model.blog
         .findOne({
-          attributes: ['id','user_id','judul','summary', 'konten'],
+          attributes: ['id','user_id','judul','summary', 'konten','created_at'],
+         
           include: [
             {
               model: model.komentar_blog,
-              attributes: ["id", "blog_id","user_id","komentar"],
+              attributes: ["id", "blog_id","user_id","komentar", "created_at"],
               required: false,
+              order: [
+                ['created_at', 'DESC']
+              ]
             },
             // {
             //   model: model.users,
@@ -178,9 +182,7 @@ controller.addBlogComment = async function(req, res){
             user_id: user_id,
             komentar: komentar
         });
-        res.status(200).json({
-          message: 'berhasil tambah komentar',
-        })
+       res.redirect('back');
     } catch (error) {
         console.log(error);
     }
@@ -226,7 +228,7 @@ controller.deleteBlogComment= async (req, res) => {
         
         .then((result) => {
           if (result.length > 0) {
-            res.render("blog/addBlog", {items: result,blogActive: "", forumActive: "active", ecommerceActive:"" });
+            res.render("blog/addBlog", {items: result,blogActive: "active", forumActive: "", ecommerceActive:"" });
           //  res.status(200).json({
           //       message: 'mendapat data dosen',
           //       data : result

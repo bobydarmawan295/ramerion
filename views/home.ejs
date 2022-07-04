@@ -86,7 +86,11 @@
             </div>
           </div>
           <div class="container mt-5 px-4 px-lg-5 text-center">
+            <% if (nama != "user") { %>
             <a class="btn btn-light btn-xl" href="/forum">Lihat Selengkapnya!</a>
+            <% } else { %>
+            <a class="btn btn-light btn-xl" href="/">Lihat Selengkapnya!</a>
+            <% } %>
           </div>
         </div>
       </div>

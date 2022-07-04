@@ -21,6 +21,12 @@ const komentar_forum = sequelize.define('komentar_forum', {
           key: 'id'
         }
     },
+    user : {
+        
+        type : DataTypes.STRING,
+        allowNull: true
+    },
+
     forum_id:
     {
         type : DataTypes.BIGINT,

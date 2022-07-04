@@ -75,7 +75,7 @@
                       <div class="text-muted small align-items">
                         <p>
                           <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%= item.id %>" aria-expanded="false" aria-controls="collapseExample">
-                            <span><i class="far fa-comment ml-2"></i> 3 </span> 
+                            <span><i class="far fa-comment ml-2"></i> <%= item.count%> </span> 
                           </button>
                         </p>
                         <div class="collapse" id="collapseExample<%= item.id %>">
@@ -98,7 +98,7 @@
                           <div class="card card-body">
                             <div class="col-auto">
                               <h5><a href="#" data-toggle="collapse" class="text-body" style="text-decoration: none"><%= data.user %></a></h5>
-                              <p class="text-secondary">Sistem Informasi - 20</p>
+                              <p class="text-secondary"><%= data.created_at %></p>
                             </div>
                           <div class="col-12 mb-12 mt-1">
                             <p class="komentar">

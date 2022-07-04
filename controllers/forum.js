@@ -1,6 +1,6 @@
 const model = require('../models/indexmodel');
 const { Op, QueryTypes  } = require("sequelize");
-const sequelize = model.dbconfig;
+const sequelize = require("../config/conn");
 const controller = {};
 
 
@@ -12,7 +12,7 @@ controller.getAllForum = async (req, res) => {
           include: [
             {
               model: model.komentar_forum,
-              attributes: ["id", "forum_id","user_id","komentar", "user"],
+              attributes: ["id", "forum_id","user_id","komentar", "user",'created_at'],
               required: false,
             },
             

@@ -38,6 +38,20 @@ controller.riwayat = async (req, res) => {
     res.render("e-commerce/riwayat", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
 }
 
+controller.detailProduk= async (req, res) => { 
+    
+  const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+
+  res.render("e-commerce/detailProduk", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+}
+
+controller.allCart= async (req, res) => { 
+    
+  const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+
+  res.render("e-commerce/allCart", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+}
+
 controller.getAllProduk = async (req, res) => {
     try {
       await model.produk

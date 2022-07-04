@@ -44,7 +44,7 @@ controller.getBlogById= async (req, res) => {
             {
               model: model.komentar_blog,
               attributes: ["id", "blog_id","user_id","komentar"],
-              required: true,
+              required: false,
             },
             // {
             //   model: model.users,
@@ -58,7 +58,8 @@ controller.getBlogById= async (req, res) => {
         })
         .then((result) => {
           if (result) {
-            res.render("blog/detailBlog", { items: result,blogActive: "active", forumActive: "", ecommerceActive:"" });
+            res.render("blog/detailBlog", { items: result, blogActive: "active", forumActive: "", ecommerceActive:"" });
+            // res.send(result)
             // res.status(200).json({
             //   message: 'mendapat id blog',
             //   data: result
@@ -90,7 +91,7 @@ controller.addBlog = async (req, res) => {
         // res.status(200).json({
         //   message: 'berhasil menambahkan blog',
         // })
-        //   res.redirect("/dosen/courses");
+          res.redirect("/blog");
       } catch (error) {
         res.json({ message: error.message });
       }
@@ -225,7 +226,7 @@ controller.deleteBlogComment= async (req, res) => {
         
         .then((result) => {
           if (result.length > 0) {
-            res.render("blog/addBlog", { items: result });
+            res.render("blog/addBlog", {items: result,blogActive: "", forumActive: "active", ecommerceActive:"" });
           //  res.status(200).json({
           //       message: 'mendapat data dosen',
           //       data : result

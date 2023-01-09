@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <a href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.16/sweetalert2.min.css"></a>
     <link rel="stylesheet" href="asset/css/style1.css" />
+   
     <title>Hello, Rangers!</title>
   </head>
 
@@ -87,17 +89,30 @@
             <% if (nama != "user") { %>
             <a class="btn btn-light btn-xl" href="/forum">Lihat Selengkapnya!</a>
             <% } else { %>
-            <a class="btn btn-light btn-xl" href="/">Lihat Selengkapnya!</a>
+            <a class="btn btn-light btn-xl" onclick="success()">Lihat Selengkapnya!</a>
             <% } %>
           </div>
         </div>
       </div>
     </section>
+    
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.16/sweetalert2.all.min.js"></script>
     <script src="./asset/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+      function success() {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Anda Belum login!',
+          footer: '<a href="/auth/login">Silahkan login disini</a>'
+        })
+      }
+    </script>
   </body>
 </html>

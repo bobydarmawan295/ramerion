@@ -47,11 +47,7 @@ const produk = sequelize.define('produk', {
         type : DataTypes.STRING,
         allowNull : false
     },
-    hargabefore : {
-        type : DataTypes.INTEGER,
-        allowNull : false
-    },
-    hargaafter : {
+    harga : {
         type : DataTypes.INTEGER,
         allowNull : false
     },

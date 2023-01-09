@@ -92,7 +92,7 @@ controller.getAllProduk = async (req, res) => {
             // res.status(200).json({
             //     message: 'mendapat data produk',
             //     data: result
-            // })
+            // })harga
           } else {
             res.status(404).json({
                 message: "data tidak ada",
@@ -113,7 +113,7 @@ controller.getProdukById= async (req, res) => {
     try {
       await model.produk
         .findOne({
-          attributes: ['id','user_id','id_kategori','nama','gambar','deskripsi','rate','hargabefore','hargaafter'],
+          attributes: ['id','user_id','id_kategori','nama','gambar','deskripsi','rate','harga'],
           where: {
             id: req.params.id,
           },
@@ -141,15 +141,14 @@ controller.getProdukById= async (req, res) => {
 
 controller.addProduk = async (req, res) => {
     try {
-        const { user_id,id_kategori,konten,nama,gambar,deskripsi,rate,hargabefore,hargaafter} = req.body;
+        const { user_id,id_kategori,konten,nama,gambar,deskripsi,rate,harga} = req.body;
         await model.produk.create({
             user_id: user_id,
             id_kategori: id_kategori,
             nama: nama,
             deskripsi: deskripsi,
             rate: rate,
-            hargabefore: hargabefore,
-            hargaafter: hargaafter
+            harga
         });
         res.status(200).json({
           message: 'berhasil menambah produk',
@@ -163,7 +162,7 @@ controller.addProduk = async (req, res) => {
 
 controller.updateProduk = async (req, res) => {
     try {
-      const {  user_id,id_kategori,konten,nama,gambar,deskripsi,rate,hargabefore,hargaafter} = req.body;
+      const {  user_id,id_kategori,konten,nama,gambar,deskripsi,rate,harga} = req.body;
       await model.produk.update(
         {
           user_id: user_id,
@@ -171,8 +170,7 @@ controller.updateProduk = async (req, res) => {
           nama: nama,
           deskripsi: deskripsi,
           rate: rate,
-          hargabefore: hargabefore,
-          hargaafter: hargaafter
+          harga
         },
         {
           where: {
@@ -279,8 +277,7 @@ controller.checkout= async function(req, res){      //checkout
     //         gambar: gambar,
     //         deskripsi: deskripsi,
     //         rate: rate,
-    //         harga_before: harga_before,
-    //         harga_after: harga_after
+    //         harga
     //     });
     //     //   res.redirect("/dosen/courses");
     //   } catch (error) {

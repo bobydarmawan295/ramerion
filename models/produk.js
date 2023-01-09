@@ -47,11 +47,7 @@ const produk = sequelize.define('produk', {
         type : DataTypes.STRING,
         allowNull : false
     },
-<<<<<<< HEAD
-    harga: {
-=======
     harga : {
->>>>>>> de866534c4ad89fc2715bc9b4d616f6a95ba01d8
         type : DataTypes.INTEGER,
         allowNull : false
     },

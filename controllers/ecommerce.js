@@ -33,16 +33,47 @@ controller.barangTerjual = async (req, res) => {
 
 controller.riwayat = async (req, res) => { 
     
-    const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+    const kategori = await model.produk.findAll({attributes: [ 'id', 'nama']});
 
     res.render("e-commerce/riwayat", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
 }
 
 controller.detailProduk= async (req, res) => { 
     
-  const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
+  try {
+    await model.produk
+      .findOne({
+        attributes: ['id','user_id','nama','deskripsi','rate', 'harga','stok'],
+        // include: [
+        //   {
+        //     model: model.kategori_produk,
+        //     attributes: ["id", "nama"],
+        //     required: false,
+        //     order: [
+        //       ['id', 'ASC']
+        //     ]
+        //   },
+        // ],
+        where: {
+          id: req.params.id,
+        },
+      })
+      .then((result) => {
+        if (result) {
+          res.render("e-commerce/detailProduk", { items: result, blogActive: "", forumActive: "", ecommerceActive:"active" });
+        } else {
+          res.status(404).json({
+            message: "data tidak ada",
+            data: [],
+          });
+        }
+      });
+  } catch (error) {
+    res.status(404).json({
+      message: error,
+    });
+  }
 
-  res.render("e-commerce/detailProduk", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
 }
 
 controller.detailPembayaran= async (req, res) => { 

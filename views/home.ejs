@@ -28,7 +28,11 @@
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="ecommerce.html">Logout</a></li>
+            <li>
+              <form action="/auth/logout" method="post">
+              <button style ="border: white; background-color: white;" type="submit">Sign out</button>
+              </form>
+            </li>
           </ul>
           <% } else { %>
           <button type="button" style="background-color: transparent; color: #29c6cd; border: #29c6cd" class="btn btn-light">Silahkan Login</button>

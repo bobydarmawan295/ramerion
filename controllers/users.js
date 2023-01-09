@@ -8,27 +8,27 @@ function generateAccessToken(username) {
   return jwt.sign(username, process.env.TOKEN, { expiresIn: "1d" });
 }
 
-controller.retrieveAll = async function (req, res) {
-  try {
-    await model.findAll().then((result) => {
-      if (result.length > 0) {
-        res.status(200).json({
-          message: "data user berhasil didapatkan",
-          data: result,
-        });
-      } else {
-        res.status(200).json({
-          message: "data tidak ada",
-          data: [],
-        });
-      }
-    });
-  } catch (error) {
-    res.status(404).json({
-      message: error,
-    });
-  }
-};
+// controller.retrieveAll = async function (req, res) {
+//   try {
+//     await model.findAll().then((result) => {
+//       if (result.length > 0) {
+//         res.status(200).json({
+//           message: "data user berhasil didapatkan",
+//           data: result,
+//         });
+//       } else {
+//         res.status(200).json({
+//           message: "data tidak ada",
+//           data: [],
+//         });
+//       }
+//     });
+//   } catch (error) {
+//     res.status(404).json({
+//       message: error,
+//     });
+//   }
+// };
 
 controller.tampilregister = async function (req, res) {
   res.render("register");
@@ -108,16 +108,13 @@ controller.logout = async function (req, res) {
   });
   if (!user) return res.status(200).json("User tidak ada");
   const id = user.id;
-  await model.update({ remember_token: null },
+  await model.update({ remember_token: "" },
        { where: {id: id,},
     }
   );
   res
     .clearCookie("token")
-    .redirect("/")
-    // .locals = null;
-    
-  // res.sendStatus(200);
+    .redirect("/");
 
 };
 

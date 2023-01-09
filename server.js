@@ -13,7 +13,7 @@ const blog = require("./routes/blog");
 const forum= require("./routes/forum");
 const ecommerce= require("./routes/ecommerce");
 
-const { isPenjual, isAdmin , checkUser } = require(`./middleware/authToken`);
+const { isLogin , checkUser } = require(`./middleware/authToken`);
 const { MulterError } = require("multer");
 
 app.use(bodyParser.json());
@@ -26,10 +26,10 @@ app.use(express.static("public"));
 
 app.get("*", checkUser);
 app.use("/auth", auth);
-app.use('/blog', blog);
+app.use('/blog', isLogin ,blog);
 
-app.use('/ecommerce', ecommerce);
-app.use('/forum', forum);
+app.use('/ecommerce', isLogin ,ecommerce);
+app.use('/forum', isLogin ,forum);
 
 //--------------------------------
 
@@ -48,8 +48,8 @@ app.get("/", (req, res) => {
 // });
 
 
-// app.get("/500",(req,res) => {
-//     res.render("eror500");
+// app.get("/300",(req,res) => {
+//     res.render("eror403");
 //   });
 
 //----------------------------------

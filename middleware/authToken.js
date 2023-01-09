@@ -43,7 +43,7 @@ const checkUser = (req,res,next) =>{
   }
 }
 
-function isMahasiswa(req, res, next) {
+function isLogin(req, res, next) {
   const token = req.cookies.token
 
   if(token){
@@ -52,47 +52,9 @@ function isMahasiswa(req, res, next) {
           console.log(err.message)
           res.send('token error');  //505
       }else{
-          // console.log(decodedToken);
-          const role = decodedToken.role;
-          if (role != "mahasiswa") return res.render("eror403");
-          next()
-      }
-  })
-} else{
-  res.render("eror403")
-  }
-}
-
-function isAdmin(req, res, next) {
-  const token = req.cookies.token
-
-  if(token){
-  jwt.verify(token, process.env.TOKEN, (err, decodedToken) =>{
-      if(err){
-          console.log(err.message)
-          res.send('token error');  //505
-      }else{
-          const role = decodedToken.role;
-          if (role != "admin") return res.render("eror403");
-          next()
-      }
-  })
-} else{
-  res.render("eror403")
-  }
-}
-
-function isPenjual(req, res, next) {
-  const token = req.cookies.token
-
-  if(token){
-  jwt.verify(token, process.env.TOKEN, (err, decodedToken) =>{
-      if(err){
-          console.log(err.message)
-          res.send('token error');  //505
-      }else{
-          const role = decodedToken.role;
-          if (role != "penjual") return res.render("eror403");
+          console.log(decodedToken);
+          // const role = decodedToken.role;
+          // if (role != "mahasiswa") return res.render("eror403");
           next()
       }
   })
@@ -102,4 +64,5 @@ function isPenjual(req, res, next) {
 }
 
 
-module.exports = {isMahasiswa, isAdmin ,checkUser};
+
+module.exports = {isLogin ,checkUser};

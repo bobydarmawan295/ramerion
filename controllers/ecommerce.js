@@ -82,7 +82,7 @@ controller.getAllProduk = async (req, res) => {
     try {
       await model.produk
         .findAll({
-          attributes: ['id','user_id','id_kategori','nama','gambar','deskripsi','rate','hargabefore','hargaafter'],
+          attributes: ['id','user_id','id_kategori','nama','gambar','deskripsi','rate','harga'],
           // group: ['id_kategori']
           // raw: true,
         })

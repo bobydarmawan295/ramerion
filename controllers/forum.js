@@ -79,12 +79,7 @@ controller.getForumById= async (req, res) => {
   controller.addForum = async (req, res) => {
     try {
         const { forum_id,user_id,user,konten} = req.body;
-        await model.forum.create({
-            forum_id:forum_id,
-            user_id: user_id,
-            user: user,
-            konten: konten,
-        });
+        await model.forum.create({ forum_id, user_id, user, konten,});
           res.redirect("/forum");
       } catch (error) {
         res.json({ message: error.message });
@@ -96,15 +91,9 @@ controller.updateForum = async (req, res) => {
     try {
       const { user_id,user,konten} = req.body;
       await model.forum.update(
+        { user_id, user, konten,},
         {
-            user_id: user_id,
-            user: user,
-            konten: konten,
-        },
-        {
-          where: {
-            id: req.params.id,
-          },
+          where: { id: req.params.id,},
         }
       );
       res.status(200).json({
@@ -119,9 +108,7 @@ controller.updateForum = async (req, res) => {
 controller.deleteForum= async (req, res) => {
     try {
       await model.forum.destroy({
-        where: {
-          id: req.params.id,
-        },
+        where: { id: req.params.id },
       });
       res.status(200).json({
         message: 'berhasil happus data',
@@ -166,14 +153,8 @@ controller.deleteForum= async (req, res) => {
     const { user_id,forum_id,komentar,user} = req.body;
 
     try {
-        await model.komentar_forum.create({
-          forum_id: forum_id,
-          user_id: user_id,
-          user:user,
-          komentar: komentar
-        });
+        await model.komentar_forum.create({ forum_id, user_id,user, komentar});
 
-     
         res.redirect('back');
     } catch (error) {
         console.log(error);

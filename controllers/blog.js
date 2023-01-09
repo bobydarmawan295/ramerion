@@ -84,18 +84,9 @@ controller.getBlogById= async (req, res) => {
 controller.addBlog = async (req, res) => {
     try {
         const { user_id, kategori_id,judul, summary, konten, user} = req.body;
-        await model.blog.create({
-          user_id : user_id,
-          user:user,
-          kategori_id: kategori_id,
-          judul: judul,
-          summary: summary,
-          konten: konten,
-        });
-        // res.status(200).json({
-        //   message: 'berhasil menambahkan blog',
-        // })
-          res.redirect("/blog");
+        await model.blog.create({ user_id, user, kategori_id, judul, summary, konten,});
+        res.status(200)
+          .redirect("/blog");
       } catch (error) {
         res.json({ message: error.message });
       }
@@ -105,13 +96,7 @@ controller.updateBlog = async (req, res) => {
     try {
       const { user_id,kategori_id, judul, konten} = req.body;
       await model.blog.update(
-        {
-          user_id: user_id,
-          kategori_id: kategori_id,
-          judul: judul,
-          summary: summary,
-          konten: konten
-        },
+        { user_id, kategori_id, judul, summary, konten},
         {
           where: {
             id: req.params.id,
@@ -177,12 +162,7 @@ controller.addBlogComment = async function(req, res){
     const { blog_id, user_id,komentar,user } = req.body;
 
     try {
-        await model.komentar_blog.create({
-            blog_id: blog_id,
-            user_id: user_id,
-            user: user,
-            komentar: komentar
-        });
+        await model.komentar_blog.create({ blog_id, user_id, user, komentar});
        res.redirect('back');
     } catch (error) {
         console.log(error);

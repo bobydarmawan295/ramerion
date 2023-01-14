@@ -25,16 +25,13 @@ controller.getAllForum = async (req, res) => {
         })
         .then((result) => {
           if (result.length > 0) {
+            // res.json({items: result})
             res.render("forum/allForum", { items: result, blogActive: "", forumActive: "active", ecommerceActive:"" });
-            // res.status(200).json({
-            //     message: 'mendapat data forum',
-            //     data: result
-            // })
+
           } else {
-            res.status(404).json({
-                message: "data tidak ada",
-                data: [],
-            });
+            result[0].user = "kosongggg";
+            result[0].konten = "masih kosong nih forumnya";
+            res.render("forum/allForum", { items: result, blogActive: "", forumActive: "active", ecommerceActive:"" });
           }
         });
     } catch (error) {

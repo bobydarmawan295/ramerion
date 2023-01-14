@@ -1,12 +1,8 @@
 <%- include('../partials/header'); -%>
-          <!-- /Inner sidebar -->
 
-          <!-- Inner main -->
           <div class="inner-main">
 
-            <!-- Forum List -->
             <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
-              <!-- Form Tampil Postingan -->
               <div class="card mb-2">
                 <div class="card-body p-2 p-sm-3">
                   <div class="media forum-item">
@@ -19,11 +15,11 @@
                       </div>
                       <div class="col-auto">
                         <h5><a href="#" data-toggle="collapse" class="text-body" style="text-decoration: none"><%= items.user %></a></h5>
-                        <p class="text-secondary">Sistem Informasi - 20</p></br>
+                        <p class="text-secondary mt-2"><%= items.created_at %></p>
+                        </br>
                       </div>
                       <hr /> </br>
                       <div class="col-12 mb-3 mt-1">
-                        <p class="komentar">
                           <%= items.konten %>
                       </div>
                     </div>
@@ -59,17 +55,10 @@
                   <p class="card-subtitle mb-2 text-muted pb-3"><%= data.created_at %></p>
                   <p class="card-text"><%= data.komentar %></p>
                 </div>
-                <% }) %>
-      
-               
+                <% }) %>             
              
             </div>
-
-            <!-- Akhir Form Tampil Postingan -->
-
-            <!-- /Inner main body -->
           </div>
-          <!-- /Inner main -->
         </div>
       </div>
     </div>

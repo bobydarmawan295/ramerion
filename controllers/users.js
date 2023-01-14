@@ -8,34 +8,13 @@ function generateAccessToken(username) {
   return jwt.sign(username, process.env.TOKEN, { expiresIn: "1d" });
 }
 
-// controller.retrieveAll = async function (req, res) {
-//   try {
-//     await model.findAll().then((result) => {
-//       if (result.length > 0) {
-//         res.status(200).json({
-//           message: "data user berhasil didapatkan",
-//           data: result,
-//         });
-//       } else {
-//         res.status(200).json({
-//           message: "data tidak ada",
-//           data: [],
-//         });
-//       }
-//     });
-//   } catch (error) {
-//     res.status(404).json({
-//       message: error,
-//     });
-//   }
-// };
 
 controller.tampilregister = async function (req, res) {
   res.render("register");
 }
 
 controller.register = async function (req, res) {
-  const { name, username, password,confPassword, role } = req.body;
+  const { name, username, password,confPassword } = req.body;
   if (password !== confPassword) return res.status(400).json({ msg: "Password dan Confirm Password tidak cocok" });
   const salt = await bcrypt.genSalt();
   const hashPassword = await bcrypt.hash(password, salt);
@@ -45,10 +24,7 @@ controller.register = async function (req, res) {
 
   try {
     await model.create({
-      name: name,
-      username: username,
-      password: hashPassword,
-      role: role,
+      name , username, password: hashPassword,
     });
     res.redirect("/auth/login");
   } catch (error) {

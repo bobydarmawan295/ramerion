@@ -1,51 +1,37 @@
 
 <%- include('../partials/header'); -%>
-          <!-- /Inner sidebar -->
 
-          <!-- Inner main -->
-          <div class="inner-main">
+    <div class="inner-main">
 
-            <!-- Forum List -->
-            <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
-             
-
-              <!-- Form Tampil Postingan -->
-              <div class="card mb-2">
-                <div class="card-body p-2 p-sm-3">
-                  <div class="media forum-item">
-                  <div class="row">
-                    <div class="col-md-6 mb-4 mb-4">
-                      <img src="/asset/img/sepatu (2).jpg" width="90%" alt="..." />
-                    </div>
-                    <div class="col-md-4 mt-5">
-                      <h3><%= items.nama %></h3>
-                      <span></span> </br>
-                      <span>Rp <%= items.harga %></span><br><br>
-                      <div class="mb-3 mt-2">
-                        <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Deskripsi Produk"><%= items.deskripsi %></textarea>
-                      </div> 
-                      <div class="d-grid gap-2">
-                        <button class="btn btn-dark rounded-pill" type="button"><a href="/ecommerce/allCart" style="color: white; text-decoration:none;">Add To Cart</button></a>
-                      </div>
-                    </div>
+      <!-- Forum List -->
+      <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
+        <div class="card mb-2">
+          <div class="card-body p-2 p-sm-3">
+              <div class="media forum-item">
+              <div class="row">
+                <div class="col-md-6 mb-4 mb-4">
+                  <img src="/asset/img/sepatu (2).jpg" width="90%" alt="..." />
+                </div>
+                <div class="col-md-4 mt-5">
+                  <h3><%= items.nama %></h3>
+                  <span></span> </br>
+                  <span>Rp <%= items.harga %></span><br><br>
+                  <div class="mb-3 mt-2">
+                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Deskripsi Produk"><%= items.deskripsi %></textarea>
+                  </div> 
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-dark rounded-pill" type="button"><a href="/ecommerce/allCart" style="color: white; text-decoration:none;">Add To Cart</button></a>
                   </div>
-                  </div>
+                </div>
               </div>
-              
-              <!-- Akhir Form Tampil Postingan -->
-
-
-            <!-- /Inner main body -->
+              </div>
           </div>
-          <!-- /Inner main -->
         </div>
       </div>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-   
   </body>
 </html>

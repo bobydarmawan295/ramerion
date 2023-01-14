@@ -9,18 +9,11 @@ controller.getAllBlog = async (req, res) => {
     try {
       await model.blog
         .findAll({
-          attributes: ['id','user_id','judul','summary', 'konten'],
-          // group: ['user_id']
-          // raw: true,
-        
+          order: [ ['created_at', 'DESC']  ], 
         })
         .then((result) => {
           if (result.length > 0) {
             res.render("blog/allBlog", {items : result, blogActive: "active", forumActive: "", ecommerceActive:""});
-            // res.status(200).json({
-            //     message: 'mendapat data blog',
-            //     data: result
-            // })
           } else {
             res.status(404).json({
                 message: "data tidak ada",
@@ -29,9 +22,7 @@ controller.getAllBlog = async (req, res) => {
           }
         });
     } catch (error) {
-      res.status(404).json({
-        message: error,
-      });
+      res.render("eror500", {error});
     }
   };
 
@@ -62,11 +53,7 @@ controller.getBlogById= async (req, res) => {
         .then((result) => {
           if (result) {
             res.render("blog/detailBlog", { items: result, blogActive: "active", forumActive: "", ecommerceActive:"" });
-            // res.send(result)
-            // res.status(200).json({
-            //   message: 'mendapat id blog',
-            //   data: result
-            // })
+            // res.json(result)
           } else {
             res.status(404).json({
               message: "data tidak ada",
@@ -75,9 +62,7 @@ controller.getBlogById= async (req, res) => {
           }
         });
     } catch (error) {
-      res.status(404).json({
-        message: error,
-      });
+        res.render("eror500", {error});
     }
   };
 
@@ -88,7 +73,7 @@ controller.addBlog = async (req, res) => {
         res.status(200)
           .redirect("/blog");
       } catch (error) {
-        res.json({ message: error.message });
+        res.render("eror500", {error});
       }
   };
 

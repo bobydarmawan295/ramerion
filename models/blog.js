@@ -37,7 +37,7 @@ const blog = sequelize.define('blog', {
         allowNull : false
     }, 
     gambar : {
-        type : DataTypes.BLOB,
+        type : DataTypes.STRING,
         allowNull : true
     },
     summary: {

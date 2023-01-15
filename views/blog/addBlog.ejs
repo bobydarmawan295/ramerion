@@ -12,7 +12,7 @@
                       </div>
                       <div class="row">
                         <div class="col-8 mb-4 mt-4">
-                            <form action="/blog/addBlog" method="post" onsubmit="success()">
+                            <form action="/blog/addBlog" method="post" onsubmit="success()" enctype="multipart/form-data">
                                 <input type="hidden" name="user" value="<%= nama %>">
                                 <input type="hidden" name="user_id" value="<%= id %>">
                                 <div class="mb-3">
@@ -29,12 +29,13 @@
                                   </select>                             
                                 </div>
                                 
-                                <div class="mb-3">
+                                  <div class="mb-3">
                                     <label class="form-label" for="customFile">Masukkan Cover</label>
-                                    <input type="file" class="form-control" id="customFile"  name="gambar"/></div>
-                                    <div class="mb-3">
-                                      <label for="exampleInputPassword1" class="form-label">summary</label>
-                                      <textarea class="form-control" placeholder="Isi yang memuat konten anda" id="floatingTextarea" name="summary"></textarea>
+                                    <input type="file" class="form-control" id="customFile"  name="gambar_blog"/>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">summary</label>
+                                    <textarea class="form-control" placeholder="Isi yang memuat konten anda" id="floatingTextarea" name="summary"></textarea>
                                   </div><div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Isi Konten</label>
                                     <textarea class="form-control" placeholder="Isi yang memuat konten anda" id="floatingTextarea" name="konten"></textarea>

@@ -42,11 +42,11 @@ controller.tampillogin = async function (req, res) {
 controller.login = async function (req, res) {
   //Cek username
   const user = await model.findOne({ where: { username: req.body.username } });
-  if (!user) return res.status(400).send("username tidak ditemukan");
+  if (!user) return res.redirect('back');
 
   //Cek Password
   const validPass = await bcrypt.compare(req.body.password, user.password);
-  if (!validPass) return res.status(400).send("Password Salah");
+  if (!validPass) return res.redirect('back');
 
   const nama = user.name;
   const username = user.username;

@@ -1,130 +1,118 @@
 <%- include('../partials/header'); -%>
     
-          <div class="inner-main">
+    <div class="inner-main">
 
-            <!-- Inner main body -->
-
-            <!-- Forum List -->
-            <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
-              <!-- Form Post Postingan -->
-              <div class="card mb-2">
-                <div class="card-body p-sm-3">
-                  <div class="row g-3 justify-content-center">
-                    <div class="col-auto">
-                      <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="45" alt="User" /></a>
-                    </div>
-                    <div class="col-auto">
-                      <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal" style="font-size: 16px ; padding: 12px;">
-                        Ask your rangers to advice
-                      </button>
-                      
-                      <!-- Modal -->
-                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Buat Postingan</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <form action="/forum/addForum" method="post">
-                              <input type="hidden" name="user" value="<%= nama %>">
-                              <input type="hidden" name="user_id" value="<%= id %>">
-                              <div class="modal-body">
-                                <div class="form-floating">
-                                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="konten"></textarea>
-                                  <label for="floatingTextarea2">Tanyakan sesuatu pada rangers</label>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button class="btn btn-primary" type="submit">Send!</button>
-                              </div>
-                            </form>
-                            
+      <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
+        <!-- Form Post Postingan -->
+        <div class="card mb-2">
+          <div class="card-body p-sm-3">
+            <div class="row g-3 justify-content-center">
+              <div class="col-auto">
+                <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="45" alt="User" /></a>
+              </div>
+              <div class="col-auto">
+                <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal" style="font-size: 16px ; padding: 12px;">
+                  Ask your rangers to advice
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Buat Postingan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <form action="/forum/addForum" method="post">
+                        <input type="hidden" name="user" value="<%= nama %>">
+                        <input type="hidden" name="user_id" value="<%= id %>">
+                        <div class="modal-body">
+                          <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="konten"></textarea>
+                            <label for="floatingTextarea2">Tanyakan sesuatu pada rangers</label>
                           </div>
                         </div>
-                      </div>         
-                      <!-- End Modals -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button class="btn btn-primary" type="submit">Send!</button>
+                        </div>
+                      </form>
+                      
                     </div>
+                  </div>
+                </div>         
+                <!-- End Modals -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <% items.forEach((item) => { %>
+        <div class="card mb-2">
+          <div class="card-body p-2 p-sm-3">
+            <div class="media forum-item">
+              <div class="row">
+                <div class="col-auto">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="45" alt="User" />
+                </div>
+                <div class="col-auto">
+                  <h5><%= item.user %></h5>
+                </div>
+              <div class="col-12 mb-3 mt-1">
+                <p class="komentar">
+                  <%= item.konten %>
+                </p>
+              </div>
+                <div class="text-muted small align-items">
+                  <p>
+                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%= item.id %>" aria-expanded="false" aria-controls="collapseExample">
+                      <span><i class="far fa-comment ml-2"></i> <%= item.count%> </span> 
+                    </button>
+                  </p>
+                  <div class="collapse" id="collapseExample<%= item.id %>">
+                    <div class="col mt-4">
+                      <div class="card card-body">
+                        <form action="/forum/addComment" method="post">
+                          <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Komentar</label>
+                              <input type="hidden" name="user" value="<%= nama %>">
+                            <input type="hidden" name="user_id" value="<%= id %>">
+                          <input type="hidden" name="forum_id" value="<%= item.id %>">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" autofocus name="komentar"></textarea ><br>
+                            <button type="submit" class="btn btn-primary" type="submit">Post!</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  <% item.komentar_forums.forEach((data) => { %>
+                  <div class="col mt-4">
+                    <div class="card card-body">
+                      <div class="col-auto">
+                        <h5><a href="#" data-toggle="collapse" class="text-body" style="text-decoration: none"><%= data.user %></a></h5>
+                        <p class="text-secondary"><%= data.created_at %></p>
+                      </div>
+                    <div class="col-12 mb-12 mt-1">
+                      <p class="komentar">
+                        <%= data.komentar %>
+                      </p>
+                    </div>
+                    </div>
+                  </div>
+                  <% }) %>   
                   </div>
                 </div>
               </div>
-              <!-- Akhir Form Post Postingan -->
-
-              <!-- Form Tampil Postingan -->
-              <% items.forEach((item) => { %>
-              <div class="card mb-2">
-                <div class="card-body p-2 p-sm-3">
-                  <div class="media forum-item">
-                    <div class="row">
-                      <div class="col-auto">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="45" alt="User" />
-                      </div>
-                      <div class="col-auto">
-                        <h5><%= item.user %></h5>
-                      </div>
-                    <div class="col-12 mb-3 mt-1">
-                      <p class="komentar">
-                        <%= item.konten %>
-                      </p>
-                    </div>
-                      <div class="text-muted small align-items">
-                        <p>
-                          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%= item.id %>" aria-expanded="false" aria-controls="collapseExample">
-                            <span><i class="far fa-comment ml-2"></i> <%= item.count%> </span> 
-                          </button>
-                        </p>
-                        <div class="collapse" id="collapseExample<%= item.id %>">
-                          <div class="col mt-4">
-                            <div class="card card-body">
-                              <form action="/forum/addComment" method="post">
-                                <div class="mb-3">
-                                  <label for="exampleFormControlTextarea1" class="form-label">Komentar</label>
-                                   <input type="hidden" name="user" value="<%= nama %>">
-                                  <input type="hidden" name="user_id" value="<%= id %>">
-                                <input type="hidden" name="forum_id" value="<%= item.id %>">
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" autofocus name="komentar"></textarea ><br>
-                                  <button type="submit" class="btn btn-primary" type="submit">Post!</button>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        <% item.komentar_forums.forEach((data) => { %>
-                        <div class="col mt-4">
-                          <div class="card card-body">
-                            <div class="col-auto">
-                              <h5><a href="#" data-toggle="collapse" class="text-body" style="text-decoration: none"><%= data.user %></a></h5>
-                              <p class="text-secondary"><%= data.created_at %></p>
-                            </div>
-                          <div class="col-12 mb-12 mt-1">
-                            <p class="komentar">
-                              <%= data.komentar %>
-                            </p>
-                          </div>
-                          </div>
-                        </div>
-                        <% }) %>   
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
               </div>
-              <% }) %>
-
-              
-              <!-- Akhir Form Tampil Postingan -->
-
-
-            <!-- /Inner main body -->
-          </div>
-          <!-- /Inner main -->
+            </div>
         </div>
+        <% }) %>
+
+
       </div>
-      </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-   
+
   </body>
 </html>

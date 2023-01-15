@@ -73,7 +73,7 @@ controller.addBlog = async (req, res) => {
         res.status(200)
           .redirect("/blog");
       } catch (error) {
-        res.render("eror500", {error});
+        res.json({ message: error.message });
       }
   };
 

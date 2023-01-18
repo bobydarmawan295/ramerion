@@ -6,54 +6,47 @@
         <h2 class="mb-4">Mulai Menjual</h2>
         <div class="row">
           <div class="col-12 mb-4 mt-4">
-            <form>
-              <div class="form">
+            <form method="post" action="" enctype="multipart/form-data">
+              <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nama Produk</label>
-                <form action="#" class="subscribe-form">
-                  <div class="form-group d-flex">
-                    <div class="icon"><span class="icon-paper-plane"></span></div>
-                    <input type="text" class="form-control" placeholder="Masukkan Nama Produk Anda" />
-                  </div>
-                </form>
+                <div class="form-group d-flex">
+                  <div class="icon"><span class="icon-paper-plane"></span></div>
+                  <input type="text" class="form-control" placeholder="Masukkan Nama Produk Anda" />
+                </div>
               </div>
-              <div class="input-group mb-3">
+              <!-- <div class="input-group mb-3">
                 <label class="input-group-text" for="inputGroupSelect01">Kategori</label>
                 <select class="form-select" id="inputGroupSelect01">
                 <% kategori.forEach(function(ktgr, index) { %>
                   <option value="<%= ktgr.id %>"><%= ktgr.nama %></option>
                   <% }) %>
                 </select>
-              </div>
+              </div> -->
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Deskripsi Produk</label>
-                <form action="#" class="subscribe-form">
                   <div class="form-group d-flex">
                     <div class="icon"><span class="icon-paper-plane"></span></div>
+                    <!-- <textarea class="form-control" placeholder="Isi yang memuat konten anda" name="summary" maxlength="250"></textarea> -->
                     <input type="text" class="form-control" placeholder="Masukkan keterangan mengenai produk" />
                   </div>
-                </form>
               </div>
               <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Harga</label>
-                <form action="#" class="subscribe-form">
+                <label for="exampleInputPassword1" class="form-label">Harga(Rupiah)</label>
                   <div class="form-group d-flex">
                     <div class="icon"><span class="icon-paper-plane"></span></div>
                     <input type="number" class="form-control" min="0" placeholder="Masukkan Harga yang akan dibeli pelanggan" />
                   </div>
-                </form>
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Jumlah Stok</label>
-                <form action="#" class="subscribe-form">
                   <div class="form-group d-flex">
                     <div class="icon"><span class="icon-paper-plane"></span></div>
                     <input type="number" class="form-control" min="0" placeholder="Masukkan jumlah stok yang tersedia" />
                   </div>
-                </form>
               </div>
               <div class="mb-3">
                 <label class="form-label" for="customFile">Masukkan Foto Produk</label>
-                <input type="file" class="form-control" id="customFile" />
+                <input type="file" class="form-control" id="customFile" accept="image/*"/>
               </div>
               <button type="submit" class="btn btn-primary" style="float: right">Post</button>
             </form>

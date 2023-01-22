@@ -42,9 +42,12 @@ controller.tampillogin = async function (req, res) {
 controller.login = async function (req, res) {
   //Cek username
   const user = await model.findOne({ where: { username: req.body.username } });
-  if (!user) return res.redirect('back');
+  if (!user){
+    req.flash('message', 'NIM atau password anda salah');
+    return res.redirect('/auth/login');
+  } 
 
-  //Cek Password
+  // cek password
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.redirect('back');
 
@@ -69,7 +72,7 @@ controller.login = async function (req, res) {
       maxAge: 24 * 60 * 60 * 1000,
     })
     // .json({token})
-    .redirect("/forum");
+    .redirect("/");
 
 };
 

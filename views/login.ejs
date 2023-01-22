@@ -19,8 +19,12 @@
           <div class="col-md-6 col-lg-4">
             <div class="login-wrap p-0 mt-5">
               <h3 class="mb-4 text-center">Masuk</h3>
-
               <form action="/auth/login" class="signin-form" method="post">
+                  <% if(message.length > 0) { %>
+                  <div class="alert alert-danger">
+                      <%= message %>
+                  </div>
+                  <% } %>
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="NIM" required name="username" />
                 </div>

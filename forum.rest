@@ -1,20 +1,14 @@
-###
-GET http://localhost:3000/forum/
 
-###
-GET http://localhost:3000/forum/2
 
 
 ###
-POST http://localhost:3000/forum/addForum
+POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-     "user_id": 1,
-     "judul" : "menurunkan berat badan",
-     "konten": "cara menurunkan berat badan"
-} 
-
+     "username": "2011522023",
+     "password" : "123"
+}
 
 ###
 PUT http://localhost:3000/forum/updateForum/1
@@ -45,4 +39,8 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/forum/deleteComment/2
+
+
+###
+GET http://localhost:3000/blog/
    

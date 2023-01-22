@@ -16,11 +16,16 @@
                       <div class="col-auto">
                         <h5><a href="#" data-toggle="collapse" class="text-body" style="text-decoration: none"><%= items.user %></a></h5>
                         <p class="text-secondary mt-2"><%= items.created_at %></p>
+                        <% if (items.kategori_blog == "") { %>
+                          <p class="text-secondary mt-2">belum dikategorikan</p>
+                        <% } else {%>
+                          <p class="text-secondary mt-2"><%= items.kategori_blog %></p>
+                        <% } %>
                         </br>
                       </div>
                       <hr /> </br>
                       <div class="col-12 mb-3 mt-1">
-                          <%= items.konten %>
+                          <%- items.konten %>
                       </div>
                     </div>
                   </div>

@@ -8,7 +8,7 @@ router.use(express.static("public"));
 
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, path.join(__dirname,'../storage/'));
+      cb(null, path.join(__dirname,'../public/uploads/'));
     },
     filename: (req, file, cb) => {
       console.log(file);
@@ -37,8 +37,8 @@ const fileStorage = multer.diskStorage({
   
 
 router.get("/", controller.blog.getAllBlog);
-router.get("/detail-:id", controller.blog.getBlogById);
-router.get("/addBlog",controller.blog.getBlog);
+router.get("/baca/:slug", controller.blog.getBlogBySlug);
+router.get("/addBlog",controller.blog.tampilTambahBlog);
 router.post("/addBlog", upload.single("gambar_blog") ,controller.blog.addBlog);
 router.put("/updateBlog/:id", controller.blog.updateBlog);
 router.delete("/deleteBlog/:id", controller.blog.deleteBlog);

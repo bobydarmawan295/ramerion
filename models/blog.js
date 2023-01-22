@@ -26,13 +26,17 @@ const blog = sequelize.define('blog', {
         type : DataTypes.STRING,
         allowNull : false
     },
-    kategori_id:
+    kategori_blog:
     {
-        type : DataTypes.BIGINT,
+        type : DataTypes.STRING,
         allowNull: false
         
     },
     judul : {
+        type : DataTypes.STRING,
+        allowNull : false
+    }, 
+    slug : {
         type : DataTypes.STRING,
         allowNull : false
     }, 

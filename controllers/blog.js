@@ -1,6 +1,6 @@
 const model = require('../models/indexModel');
 const { Op, QueryTypes  } = require("sequelize");
-// const sequelize = model.dbconfig;
+const slugify = require('slugify')
 const controller = {};
 
 
@@ -26,11 +26,10 @@ controller.getAllBlog = async (req, res) => {
     }
   };
 
-controller.getBlogById= async (req, res) => {
+controller.getBlogBySlug= async (req, res) => {
     try {
       await model.blog
         .findOne({
-          attributes: ['id','user_id','user','judul','summary', 'konten','created_at'],
           include: [
             {
               model: model.komentar_blog,
@@ -39,17 +38,13 @@ controller.getBlogById= async (req, res) => {
               order: [
                 ['id', 'ASC']
               ]
-            },
-            // {
-            //   model: model.users,
-            //   attributes: ["id", "name"],
-            //   required: false,
-            // },
+            }
           ],
           where: {
-            id: req.params.id,
+            slug: req.params.slug,
           },
         })
+
         .then((result) => {
           if (result) {
             res.render("blog/detailBlog", { items: result, blogActive: "active", forumActive: "", ecommerceActive:"" });
@@ -68,8 +63,10 @@ controller.getBlogById= async (req, res) => {
 
 controller.addBlog = async (req, res) => {
     try {
-        const { user_id, kategori_id,judul, summary, konten, user} = req.body;
-        await model.blog.create({ user_id, user, kategori_id, judul, summary, konten,});
+        const { user_id, kategori_blog,judul, summary, konten, user} = req.body;
+        const slug = slugify(judul);
+        const gambar = req.file.filename
+        await model.blog.create({ user_id, user, kategori_blog, judul, gambar, slug, summary, konten,});
         res.status(200)
           .redirect("/blog");
       } catch (error) {
@@ -122,7 +119,6 @@ controller.getAllComment = async (req, res) => {
       })
       .then((result) => {
         if (result.length > 0) {
-          // res.render("blog/allBlog", { items: result ,dasbordaktif: "", rpsaktif: "active" });
           res.status(200).json({
               message: 'mendapat data komentar',
               data: result
@@ -163,42 +159,21 @@ controller.deleteBlogComment= async (req, res) => {
         },
       });
       res.status(200).json({
-        message: 'berhasil hapus comment',
+        message: 'berhasil hapus komen',
       })
     } catch (error) {
       res.json({ message: error.message });
     }
   };
 
-  controller.deleteComment = async function(req, res){
-    try {
-        await model.model_komentar.destroy({
-          where: {
-            id: req.params.id,
-          },
-        });
-        res.status(200).json({
-          message: 'berhasil hapus comment',
-        })
-      } catch (error) {
-        res.json({ message: error.message });
-      }
-  }
-
-  controller.getBlog= async (req, res) => {
+  controller.tampilTambahBlog= async (req, res) => {
     try {
       await model.kategori_blog
-        .findAll({
-          attributes: ["id", "nama"],
-        })
-        
+        .findAll()
         .then((result) => {
           if (result.length > 0) {
             res.render("blog/addBlog", {items: result,blogActive: "active", forumActive: "", ecommerceActive:"" });
-          //  res.status(200).json({
-          //       message: 'mendapat data dosen',
-          //       data : result
-          //   })
+            // console.log(result)
           } else {
             res.status(200).json({
               message: "data tidak ada",

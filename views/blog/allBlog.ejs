@@ -23,15 +23,19 @@
                   <div class="media forum-item">
                     <div class="row">
                       <div class="col-4 mb-4 mt-4">
-                        <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="asset/img/thumbnailCardPict.a8fabb33.jpg" width="90%" alt="User" /></a>
+                        <% if (item.gambar==null) { %>
+                            <img src="asset/img/thumbnailCardPict.a8fabb33.jpg" width="90%" alt="User" />
+                          <% } else { %>
+                            <img src="uploads/<%= item.gambar %>" width="90%" alt="gambar-postingan" />
+                        <% } %>
                       </div>
                       <div class="col-6 mb-4 mt-4">
-                        <h4><a href="/blog/detail-<%= item.id %>" data-toggle="collapse" class="text-body" style="text-decoration: none"><%= item.judul %></a></h4>
+                        <h4><a href="/blog/baca/<%= item.slug %>" data-toggle="collapse" class="text-body" style="text-decoration: none"><%= item.judul %></a></h4>
             
                         <div class="col-12 mb-3 mt-1">
                           <p class="komentar">
                             <%= item.summary %>
-                            <a class="stretched-link" href="/blog/detail-<%= item.id %>">Lihat selengkapnya...</a>
+                            <a class="stretched-link" href="/blog/baca/<%= item.slug %>">Lihat selengkapnya...</a>
                         </div>
                       
                       </div>

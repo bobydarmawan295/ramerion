@@ -11,7 +11,7 @@
                 <label for="exampleInputEmail1" class="form-label">Nama Produk</label>
                 <div class="form-group d-flex">
                   <div class="icon"><span class="icon-paper-plane"></span></div>
-                  <input type="text" class="form-control" placeholder="Masukkan Nama Produk Anda" />
+                  <input type="text" class="form-control" placeholder="Masukkan Nama Produk Anda" required/>
                 </div>
               </div>
               <!-- <div class="input-group mb-3">
@@ -27,26 +27,26 @@
                   <div class="form-group d-flex">
                     <div class="icon"><span class="icon-paper-plane"></span></div>
                     <!-- <textarea class="form-control" placeholder="Isi yang memuat konten anda" name="summary" maxlength="250"></textarea> -->
-                    <input type="text" class="form-control" placeholder="Masukkan keterangan mengenai produk" />
+                    <input type="text" class="form-control" placeholder="Masukkan keterangan mengenai produk" required/>
                   </div>
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Harga(Rupiah)</label>
                   <div class="form-group d-flex">
                     <div class="icon"><span class="icon-paper-plane"></span></div>
-                    <input type="number" class="form-control" min="0" placeholder="Masukkan Harga yang akan dibeli pelanggan" />
+                    <input type="number" class="form-control" min="0" placeholder="Masukkan Harga yang akan dibeli pelanggan" required/>
                   </div>
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Jumlah Stok</label>
                   <div class="form-group d-flex">
                     <div class="icon"><span class="icon-paper-plane"></span></div>
-                    <input type="number" class="form-control" min="0" placeholder="Masukkan jumlah stok yang tersedia" />
+                    <input type="number" class="form-control" min="0" placeholder="Masukkan jumlah stok yang tersedia" required/>
                   </div>
               </div>
               <div class="mb-3">
                 <label class="form-label" for="customFile">Masukkan Foto Produk</label>
-                <input type="file" class="form-control" id="customFile" accept="image/*"/>
+                <input type="file" class="form-control" id="customFile" accept=".jpg, .jpeg, .png" required/>
               </div>
               <button type="submit" class="btn btn-primary" style="float: right">Post</button>
             </form>

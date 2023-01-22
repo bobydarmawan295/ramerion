@@ -13,18 +13,10 @@ const kategori_blog = sequelize.define('kategori_blog', {
         type : DataTypes.STRING,
         allowNull : false
     },
-    created_at : {
-        type : DataTypes.DATE
-       
-    },
-  
-
 
 },{
     tableName: 'kategori_blog',
-    timestamps: true,
-    // updatedAt: 'updated_at',
-    createdAt: 'created_at'
+    timestamps: false,
 });
 
 module.exports = kategori_blog;

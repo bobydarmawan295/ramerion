@@ -15,7 +15,7 @@ router.use(session({
 router.use(flash());
 
 router.use(function(req, res, next){
-    res.locals.message = req.flash("success");
+    res.locals.message = req.flash("message");
     next();
 });
   

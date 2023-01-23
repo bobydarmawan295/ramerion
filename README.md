@@ -1,6 +1,6 @@
 # Ramerion
-Sedang mengikuti hackathon
+Sudah mengikuti hackathon
 
-Mohon doa dan restunya🙏🙏🙏
+Alhamdulillah, terima doa dan restunya🙏🙏🙏
 
 

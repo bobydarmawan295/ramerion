@@ -1,6 +1,6 @@
 # Ramerion
 Sudah mengikuti hackathon
 
-Alhamdulillah, terima doa dan restunya🙏🙏🙏
+Alhamdulillah, terima kasih doa dan restunya🙏🙏🙏
 
 

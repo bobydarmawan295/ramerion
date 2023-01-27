@@ -10,7 +10,11 @@
               <div class="media forum-item">
               <div class="row">
                 <div class="col-md-6 mb-4 mb-4">
-                  <img src="/asset/img/sepatu (2).jpg" width="90%" alt="..." />
+                  <% if (items.gambar=="") { %>
+                    <img src="/asset/img/sepatu (2).jpg" class="card-img-top" alt="<%= items.nama %>" />
+                  <% } else { %>
+                    <img src="/uploads/produk/<%= items.gambar %>" class="card-img-top" alt="<%= items.nama %>" />  
+                  <% } %>
                 </div>
                 <div class="col-md-4 mt-5">
                   <h3><%= items.nama %></h3>
@@ -21,7 +25,7 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Deskripsi Produk"><%= items.deskripsi %></textarea>
                   </div> 
                   <div class="d-grid gap-2">
-                    <button class="btn btn-dark rounded-pill" type="button"><a href="/ecommerce/allCart" style="color: white; text-decoration:none;">Add To Cart</button></a>
+                    <a href="/ecommerce/detailPembayaran" style="color: white; text-decoration:none;" class="btn btn-dark rounded-pill" type="button">Beli</a>
                   </div>
                 </div>
               </div>

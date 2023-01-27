@@ -43,7 +43,6 @@ controller.detailProduk= async (req, res) => {
   try {
     await model.produk
       .findOne({
-        attributes: ['id','user_id','nama','deskripsi','rate', 'harga','stok'],
         // include: [
         //   {
         //     model: model.kategori_produk,
@@ -83,7 +82,6 @@ controller.detailPembayaran= async (req, res) => {
   res.render("e-commerce/detailPembayaran", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
 }
 
-
 controller.bayar= async (req, res) => { 
     
   const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
@@ -99,8 +97,6 @@ controller.upload_bukti= async (req, res) => {
   res.render("e-commerce/upload_bukti", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
 
 }
-
-
 
 controller.allCart= async (req, res) => { 
     
@@ -172,19 +168,10 @@ controller.getProdukById= async (req, res) => {
 
 controller.addProduk = async (req, res) => {
     try {
-        const { user_id,id_kategori,konten,nama,gambar,deskripsi,rate,harga} = req.body;
-        await model.produk.create({
-            user_id: user_id,
-            id_kategori: id_kategori,
-            nama: nama,
-            deskripsi: deskripsi,
-            rate: rate,
-            harga
-        });
-        res.status(200).json({
-          message: 'berhasil menambah produk',
-      })
-        //   res.redirect("/dosen/courses");
+        const { user_id,id_kategori,nama,deskripsi,harga,stok} = req.body;
+        const gambar = req.file.filename
+        await model.produk.create({ user_id, id_kategori, nama, gambar, deskripsi, harga, stok});
+        res.status(200).redirect("/ecommerce/daftarBarang");
       } catch (error) {
         res.json({ message: error.message });
         // res.redirect("/dosen/add-course");
@@ -195,14 +182,7 @@ controller.updateProduk = async (req, res) => {
     try {
       const {  user_id,id_kategori,konten,nama,gambar,deskripsi,rate,harga} = req.body;
       await model.produk.update(
-        {
-          user_id: user_id,
-          id_kategori: id_kategori,
-          nama: nama,
-          deskripsi: deskripsi,
-          rate: rate,
-          harga
-        },
+        {user_id, id_kategori, nama, deskripsi, rate, harga},
         {
           where: {
             id: req.params.id,

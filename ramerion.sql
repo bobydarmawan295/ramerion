@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 22 Jan 2023 pada 10.36
+-- Waktu pembuatan: 27 Jan 2023 pada 16.56
 -- Versi server: 5.7.39
 -- Versi PHP: 8.1.10
 
@@ -228,9 +228,9 @@ CREATE TABLE `produk` (
   `user_id` bigint(20) NOT NULL,
   `id_kategori` bigint(20) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `gambar` blob NOT NULL,
+  `gambar` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL,
-  `rate` int(11) NOT NULL,
+  `rate` int(11) DEFAULT NULL,
   `harga` int(11) NOT NULL,
   `stok` int(11) NOT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -270,7 +270,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `name`, `password`, `remember_token`, `role`, `created_at`, `updated_at`) VALUES
-(1, '2011522023', 'boby', '$2a$10$eD71y2kOD8dt59uecMZGv.GrQKmOBAwzt8bI11x9oaSVv3hmFYiqS', '', NULL, '2022-07-02 17:50:28', '2023-01-12 11:02:18'),
+(1, '2011522023', 'boby', '$2a$10$eD71y2kOD8dt59uecMZGv.GrQKmOBAwzt8bI11x9oaSVv3hmFYiqS', '', NULL, '2022-07-02 17:50:28', '2023-01-27 15:11:08'),
 (2, '2011527001', 'daffa', '$2a$10$FFhrC998SYAXea52uzE5T..8YXRyvrZL3bT5V0Hp/DY0XMZqmCba2', '', NULL, '2022-07-02 19:34:21', '2023-01-21 01:20:05'),
 (3, '2011523019', 'kemal', '$2a$10$Nt7pd7djbPhSrDoernRGQOtcS5fOqBUq4Kdp2A/QBgx4s3jJ0.L1i', '', NULL, '2022-07-04 01:08:14', '2023-01-09 16:33:16'),
 (4, '121212', 'makk', '$2a$10$NPSYZIT5oULZ2ufWzSjPMu6TFVFyI4.QyY9EIeuWxFjHHCwkcrsvK', '', NULL, '2023-01-14 03:35:32', '2023-01-22 10:35:57');
@@ -432,7 +432,7 @@ ALTER TABLE `komentar_forum`
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

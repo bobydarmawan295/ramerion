@@ -45,9 +45,13 @@ const produk = sequelize.define('produk', {
 
     rate : {
         type : DataTypes.STRING,
-        allowNull : false
+        allowNull : true
     },
     harga : {
+        type : DataTypes.INTEGER,
+        allowNull : false
+    },
+    stok : {
         type : DataTypes.INTEGER,
         allowNull : false
     },
@@ -60,9 +64,9 @@ const produk = sequelize.define('produk', {
 
 },{
     tableName: 'produk',
-    timestamps: false,
-    // updatedAt: 'updated_at',
-    // createdAt: 'created_at'
+    timestamps: true,
+    updatedAt: 'updated_at',
+    createdAt: 'created_at'
 });
 
 module.exports = produk;

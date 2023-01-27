@@ -8,7 +8,7 @@ router.use(express.static("public"));
 
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, path.join(__dirname,'../public/uploads/'));
+      cb(null, path.join(__dirname,'../public/uploads/blog'));
     },
     filename: (req, file, cb) => {
       console.log(file);

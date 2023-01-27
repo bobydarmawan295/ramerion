@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 27 Jan 2023 pada 16.56
+-- Waktu pembuatan: 27 Jan 2023 pada 18.20
 -- Versi server: 5.7.39
 -- Versi PHP: 8.1.10
 
@@ -258,6 +258,8 @@ CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
   `username` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `no_telp` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(255) DEFAULT NULL,
   `role` tinytext,
@@ -269,11 +271,11 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `name`, `password`, `remember_token`, `role`, `created_at`, `updated_at`) VALUES
-(1, '2011522023', 'boby', '$2a$10$eD71y2kOD8dt59uecMZGv.GrQKmOBAwzt8bI11x9oaSVv3hmFYiqS', '', NULL, '2022-07-02 17:50:28', '2023-01-27 15:11:08'),
-(2, '2011527001', 'daffa', '$2a$10$FFhrC998SYAXea52uzE5T..8YXRyvrZL3bT5V0Hp/DY0XMZqmCba2', '', NULL, '2022-07-02 19:34:21', '2023-01-21 01:20:05'),
-(3, '2011523019', 'kemal', '$2a$10$Nt7pd7djbPhSrDoernRGQOtcS5fOqBUq4Kdp2A/QBgx4s3jJ0.L1i', '', NULL, '2022-07-04 01:08:14', '2023-01-09 16:33:16'),
-(4, '121212', 'makk', '$2a$10$NPSYZIT5oULZ2ufWzSjPMu6TFVFyI4.QyY9EIeuWxFjHHCwkcrsvK', '', NULL, '2023-01-14 03:35:32', '2023-01-22 10:35:57');
+INSERT INTO `users` (`id`, `username`, `name`, `email`, `no_telp`, `password`, `remember_token`, `role`, `created_at`, `updated_at`) VALUES
+(1, '2011522023', 'boby', 'boby@email.com', '628783434243', '$2a$10$eD71y2kOD8dt59uecMZGv.GrQKmOBAwzt8bI11x9oaSVv3hmFYiqS', '', 'm', '2022-07-02 17:50:28', '2023-01-27 18:14:23'),
+(2, '2011527001', 'daffa', 'daffa@email.com', '628511289374', '$2a$10$FFhrC998SYAXea52uzE5T..8YXRyvrZL3bT5V0Hp/DY0XMZqmCba2', '', 'm', '2022-07-02 19:34:21', '2023-01-21 01:20:05'),
+(3, '2011523019', 'kemal', 'kemal@email.com', '622358328953', '$2a$10$Nt7pd7djbPhSrDoernRGQOtcS5fOqBUq4Kdp2A/QBgx4s3jJ0.L1i', '', 'm', '2022-07-04 01:08:14', '2023-01-09 16:33:16'),
+(4, '121212', 'makk', 'makk@email.com', '628957812642', '$2a$10$NPSYZIT5oULZ2ufWzSjPMu6TFVFyI4.QyY9EIeuWxFjHHCwkcrsvK', '', 'm', '2023-01-14 03:35:32', '2023-01-22 10:35:57');
 
 --
 -- Indexes for dumped tables
@@ -438,7 +440,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -497,5 +499,3 @@ ALTER TABLE `produk`
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

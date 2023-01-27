@@ -14,19 +14,22 @@ controller.tampilregister = async function (req, res) {
 }
 
 controller.register = async function (req, res) {
-  const { name, username, password,confPassword } = req.body;
-  if (password !== confPassword) return res.status(400).json({ msg: "Password dan Confirm Password tidak cocok" });
+  const { name, username, password,confPassword, email, no_telp } = req.body;
+  if (password !== confPassword){
+    req.flash('message', 'Sesuaikan password dan konfirmasi password!')
+    return res.redirect('back');
+  } 
   const salt = await bcrypt.genSalt();
   const hashPassword = await bcrypt.hash(password, salt);
+  const role = "m"  //register sebagai mahasiswa
 
   const usernameExist = await model.findOne({ where: { username: req.body.username} });
   if (usernameExist) return res.status(400).send("username sudah dipakai");
 
   try {
-    await model.create({
-      name , username, password: hashPassword,
-    });
-    res.redirect("/auth/login");
+    await model.create({ name , username, password: hashPassword, role, email, no_telp });
+    req.flash('messageBerhasilRegister', 'Silahkan login menggunakan username dan password yang telah didaftarkan!');
+    return res.redirect("/auth/login");
   } catch (error) {
     console.log(error);
   }

@@ -2,3 +2,4 @@ node_modules
 public/uploads/blog/*
 public/uploads/produk/*
 bukti_bayar/*
+package-lock.json

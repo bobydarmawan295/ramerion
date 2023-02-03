@@ -12,6 +12,7 @@ const auth = require("./routes/auth");
 const blog = require("./routes/blog");
 const forum= require("./routes/forum");
 const ecommerce= require("./routes/ecommerce");
+const kelola= require("./routes/kelola");
 
 const { isLogin , checkUser } = require(`./middleware/authToken`);
 const { MulterError } = require("multer");
@@ -30,6 +31,7 @@ app.use('/blog', isLogin ,blog);
 
 app.use('/ecommerce', isLogin ,ecommerce);
 app.use('/forum', isLogin ,forum);
+app.use('/kelola', isLogin ,kelola);
 
 //--------------------------------
 

@@ -6,7 +6,7 @@ const router = express();
 router.set("view engine", "ejs");
 router.use(express.static("public"));
 
-router.get("/", controller.kelola.home);
+router.get("/", controller.kelola.indexforum);
 
 
 module.exports = router;

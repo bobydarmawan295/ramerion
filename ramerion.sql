@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 27 Jan 2023 pada 18.20
--- Versi server: 5.7.39
+-- Waktu pembuatan: 08 Feb 2023 pada 08.53
+-- Versi server: 8.0.30
 -- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `blog` (
-  `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
   `user` varchar(255) NOT NULL,
   `kategori_blog` varchar(100) NOT NULL,
   `judul` varchar(255) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `blog` (
   `summary` varchar(255) NOT NULL,
   `konten` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `blog`
@@ -55,13 +55,13 @@ INSERT INTO `blog` (`id`, `user_id`, `user`, `kategori_blog`, `judul`, `slug`, `
 --
 
 CREATE TABLE `cart` (
-  `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
-  `produk_id` bigint(20) NOT NULL,
-  `jumlah` int(11) NOT NULL,
+  `id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
+  `produk_id` bigint NOT NULL,
+  `jumlah` int NOT NULL,
   `status` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `cart`
@@ -77,12 +77,12 @@ INSERT INTO `cart` (`id`, `user_id`, `produk_id`, `jumlah`, `status`, `created_a
 --
 
 CREATE TABLE `forum` (
-  `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
   `user` varchar(255) DEFAULT NULL,
   `konten` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `forum`
@@ -100,12 +100,12 @@ INSERT INTO `forum` (`id`, `user_id`, `user`, `konten`, `created_at`) VALUES
 --
 
 CREATE TABLE `gambar_blog` (
-  `id` bigint(20) NOT NULL,
-  `blog_id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
+  `blog_id` bigint NOT NULL,
   `gambar` blob NOT NULL,
   `keterangan` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -114,12 +114,12 @@ CREATE TABLE `gambar_blog` (
 --
 
 CREATE TABLE `gambar_forum` (
-  `id` bigint(20) NOT NULL,
-  `forum_id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
+  `forum_id` bigint NOT NULL,
   `gambar` varchar(255) DEFAULT NULL,
   `keterangan` text,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -128,12 +128,12 @@ CREATE TABLE `gambar_forum` (
 --
 
 CREATE TABLE `gambar_produk` (
-  `id` bigint(20) NOT NULL,
-  `id_produk` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
+  `id_produk` bigint NOT NULL,
   `gambar` blob NOT NULL,
   `keterangan` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -142,9 +142,9 @@ CREATE TABLE `gambar_produk` (
 --
 
 CREATE TABLE `kategori_blog` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
   `nama` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `kategori_blog`
@@ -165,10 +165,10 @@ INSERT INTO `kategori_blog` (`id`, `nama`) VALUES
 --
 
 CREATE TABLE `kategori_produk` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
   `nama` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `kategori_produk`
@@ -178,7 +178,8 @@ INSERT INTO `kategori_produk` (`id`, `nama`, `created_at`) VALUES
 (1, 'aksesoris', NULL),
 (2, 'pakaian', NULL),
 (3, 'makanan', NULL),
-(4, 'obat-obatan', NULL);
+(4, 'obat-obatan', NULL),
+(5, 'lainnya', NULL);
 
 -- --------------------------------------------------------
 
@@ -187,13 +188,13 @@ INSERT INTO `kategori_produk` (`id`, `nama`, `created_at`) VALUES
 --
 
 CREATE TABLE `komentar_blog` (
-  `id` bigint(20) NOT NULL,
-  `blog_id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
+  `blog_id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
   `user` varchar(255) NOT NULL,
   `komentar` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -202,13 +203,13 @@ CREATE TABLE `komentar_blog` (
 --
 
 CREATE TABLE `komentar_forum` (
-  `id` bigint(20) NOT NULL,
-  `forum_id` bigint(20) NOT NULL,
-  `user_id` bigint(20) DEFAULT NULL,
+  `id` bigint NOT NULL,
+  `forum_id` bigint NOT NULL,
+  `user_id` bigint DEFAULT NULL,
   `user` varchar(255) NOT NULL,
   `komentar` text NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `komentar_forum`
@@ -224,29 +225,30 @@ INSERT INTO `komentar_forum` (`id`, `forum_id`, `user_id`, `user`, `komentar`, `
 --
 
 CREATE TABLE `produk` (
-  `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
-  `id_kategori` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
+  `id_kategori` bigint NOT NULL,
   `nama` varchar(255) NOT NULL,
   `gambar` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL,
-  `rate` int(11) DEFAULT NULL,
-  `harga` int(11) NOT NULL,
-  `stok` int(11) NOT NULL,
+  `rate` int DEFAULT NULL,
+  `harga` int NOT NULL,
+  `stok` int NOT NULL,
+  `slug` varchar(255) DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `produk`
 --
 
-INSERT INTO `produk` (`id`, `user_id`, `id_kategori`, `nama`, `gambar`, `deskripsi`, `rate`, `harga`, `stok`, `updated_at`, `created_at`) VALUES
-(1, 2, 1, 'kaslung', '', 'jkolajkadhjk', 6, 5000, 4000, NULL, NULL),
-(3, 1, 1, 'baju', '', 'deskripsi', 0, 20000, 15000, NULL, NULL),
-(9, 3, 3, 'sate', '', 'pantang', 0, 9000, 2, NULL, NULL),
-(10, 3, 2, 'baju', '', 'baju baker', 0, 120000, 10, NULL, NULL),
-(11, 3, 3, 'minuman', '', 'miuman dingin', 0, 5000, 2, NULL, NULL);
+INSERT INTO `produk` (`id`, `user_id`, `id_kategori`, `nama`, `gambar`, `deskripsi`, `rate`, `harga`, `stok`, `slug`, `updated_at`, `created_at`) VALUES
+(1, 2, 1, 'kaslung', '', 'jkolajkadhjk', 6, 5000, 4000, NULL, NULL, NULL),
+(3, 1, 1, 'baju', '', 'deskripsi', 0, 20000, 15000, NULL, NULL, NULL),
+(9, 3, 3, 'sate', '', 'pantang', 0, 9000, 2, NULL, NULL, NULL),
+(10, 3, 2, 'baju', '', 'baju baker', 0, 120000, 10, NULL, NULL, NULL),
+(11, 3, 3, 'minuman', '', 'miuman dingin', 0, 5000, 2, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -255,27 +257,28 @@ INSERT INTO `produk` (`id`, `user_id`, `id_kategori`, `nama`, `gambar`, `deskrip
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
   `username` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(200) NOT NULL,
   `no_telp` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `remember_token` varchar(255) DEFAULT NULL,
+  `remember_token` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `role` tinytext,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `name`, `email`, `no_telp`, `password`, `remember_token`, `role`, `created_at`, `updated_at`) VALUES
-(1, '2011522023', 'boby', 'boby@email.com', '628783434243', '$2a$10$eD71y2kOD8dt59uecMZGv.GrQKmOBAwzt8bI11x9oaSVv3hmFYiqS', '', 'm', '2022-07-02 17:50:28', '2023-01-27 18:14:23'),
+(1, '2011522023', 'boby', 'boby@email.com', '628783434243', '$2a$10$eD71y2kOD8dt59uecMZGv.GrQKmOBAwzt8bI11x9oaSVv3hmFYiqS', '', 'm', '2022-07-02 17:50:28', '2023-02-03 09:00:18'),
 (2, '2011527001', 'daffa', 'daffa@email.com', '628511289374', '$2a$10$FFhrC998SYAXea52uzE5T..8YXRyvrZL3bT5V0Hp/DY0XMZqmCba2', '', 'm', '2022-07-02 19:34:21', '2023-01-21 01:20:05'),
-(3, '2011523019', 'kemal', 'kemal@email.com', '622358328953', '$2a$10$Nt7pd7djbPhSrDoernRGQOtcS5fOqBUq4Kdp2A/QBgx4s3jJ0.L1i', '', 'm', '2022-07-04 01:08:14', '2023-01-09 16:33:16'),
-(4, '121212', 'makk', 'makk@email.com', '628957812642', '$2a$10$NPSYZIT5oULZ2ufWzSjPMu6TFVFyI4.QyY9EIeuWxFjHHCwkcrsvK', '', 'm', '2023-01-14 03:35:32', '2023-01-22 10:35:57');
+(3, '2011523019', 'kemal', 'kemal@email.com', '622358328953', '$2a$10$Nt7pd7djbPhSrDoernRGQOtcS5fOqBUq4Kdp2A/QBgx4s3jJ0.L1i', '', 'm', '2022-07-04 01:08:14', '2023-02-07 05:35:39'),
+(4, '121212', 'makk', 'makk@email.com', '628957812642', '$2a$10$NPSYZIT5oULZ2ufWzSjPMu6TFVFyI4.QyY9EIeuWxFjHHCwkcrsvK', '', 'm', '2023-01-14 03:35:32', '2023-01-22 10:35:57'),
+(8, 'admin', 'admin', 'admin@ramerion.id', '085155158625', '$2a$10$GOb3vFuqzKoyr4MBGAjtZuVKJhrNl/CU5t6Okv35f3UaQ1sz18xDS', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwibmFtYSI6ImFkbWluIiwiaWQiOjgsInJvbGUiOiJkIiwiZW1haWwiOiJhZG1pbkByYW1lcmlvbi5pZCIsIm5vX3RlbHAiOiIwODUxNTUxNTg2MjUiLCJpYXQiOjE2NzU4NDIyODcsImV4cCI6MTY3NTkyODY4N30.6_lW6VZBxBvTdJVyGx4mt4KemV15ZB9iiKxWo7X4KhE', 'd', '2023-02-07 05:37:14', '2023-02-08 07:44:47');
 
 --
 -- Indexes for dumped tables
@@ -374,73 +377,73 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT untuk tabel `gambar_blog`
 --
 ALTER TABLE `gambar_blog`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `gambar_forum`
 --
 ALTER TABLE `gambar_forum`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `gambar_produk`
 --
 ALTER TABLE `gambar_produk`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_blog`
 --
 ALTER TABLE `kategori_blog`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_produk`
 --
 ALTER TABLE `kategori_produk`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `komentar_blog`
 --
 ALTER TABLE `komentar_blog`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `komentar_forum`
 --
 ALTER TABLE `komentar_forum`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -499,3 +502,5 @@ ALTER TABLE `produk`
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

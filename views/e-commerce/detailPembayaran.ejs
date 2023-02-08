@@ -7,8 +7,8 @@
             <div class="card-header">Detail Pemesanan</div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
-                <span><strong>boby darmawan</strong></span></br>
-                <p class="komentar">+62886541161 </br> bobydarmawan@gmail.com </p> 
+                <span><strong> <%= nama %> </strong></span></br>
+                <p class="komentar"><%= no_telp %> </br> <%= email %> </p> 
               </blockquote>
             </div>
           </div>
@@ -25,7 +25,6 @@
                       <div class="col-md-6 ">
                         <span><strong> Sepatu Olahraga Original</span> </strong></br>
                         <span>Qty  : 3</span>
-                        <span>Size : 45</span>
                       </div>
                 </div> 
             </div>
@@ -41,12 +40,12 @@
        <div class="row justify-content-center text-center">
         <div class="col-md-6 mt-5 mb-5">
             <div class="card">
-                <div class="card-header">Metode Pembayaran</div>
+                <!-- <div class="card-header">Metode Pembayaran</div> -->
                 <div class="card-body">
-                    <img clas="img-fluid"src="../temp/asset/img/bayar.png" width="50%"alt="">
+                    <!-- <img class="img-fluid" src="../temp/asset/img/bayar.png" width="50%"alt=""> -->
                     <div class="d-grid gap-2">
-                        <a href="/ecommerce/bayar" style="background-color: #29c6cd; border: #29c6cd;" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Bayar</a>
-                      </div>
+                      <a href="/ecommerce/bayar" style="background-color: #29c6cd; border: #29c6cd;" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Bayar</a>
+                    </div>
                 </div>
               </div>
         </div>
@@ -55,7 +54,7 @@
 
     <footer class="text-center text-white mb-5">
         <div class="text-center text-dark p-3">
-          © 2023 Copyright : Ramerion.id
+          © 2023 Copyright : Ramerion.com
         </div>
     </footer>
 

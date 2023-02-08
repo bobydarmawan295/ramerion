@@ -12,7 +12,7 @@
                 <label for="exampleInputEmail1" class="form-label">Nama Produk</label>
                 <div class="form-group d-flex">
                   <div class="icon"><span class="icon-paper-plane"></span></div>
-                  <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Produk Anda" required/>
+                  <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Produk Anda" required maxlength="250"/>
                 </div>
               </div>
               <div class="input-group mb-3">
@@ -35,14 +35,14 @@
                 <label for="exampleInputPassword1" class="form-label">Harga(Rupiah)</label>
                   <div class="form-group d-flex">
                     <div class="icon"><span class="icon-paper-plane"></span></div>
-                    <input type="number" class="form-control" min="0" name="harga" placeholder="Masukkan Harga yang akan dibeli pelanggan" required/>
+                    <input type="number" class="form-control" min="0" max="500000" maxlength="7" name="harga" placeholder="Masukkan Harga yang akan dibeli pelanggan" required/>
                   </div>
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Jumlah Stok</label>
                   <div class="form-group d-flex">
                     <div class="icon"><span class="icon-paper-plane"></span></div>
-                    <input type="number" class="form-control" min="0" name="stok" placeholder="Masukkan jumlah stok yang tersedia" required/>
+                    <input type="number" class="form-control" min="1" max="500" name="stok" placeholder="Masukkan jumlah stok yang tersedia" required/>
                   </div>
               </div>
               <div class="mb-3">

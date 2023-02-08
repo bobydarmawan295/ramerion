@@ -57,9 +57,12 @@ controller.login = async function (req, res) {
   const nama = user.name;
   const username = user.username;
   const id = user.id;
+  const role = user.role;
+  const email = user.email;
+  const no_telp = user.no_telp;
 
   const token = generateAccessToken({ 
-    username,nama,id
+    username,nama, id, role, email, no_telp
    });
 
   await model.update(

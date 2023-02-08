@@ -55,6 +55,10 @@ const produk = sequelize.define('produk', {
         type : DataTypes.INTEGER,
         allowNull : false
     },
+    slug : {
+        type : DataTypes.STRING,
+        allowNull : true
+    },
     created_at : {
         type : DataTypes.DATE
     },

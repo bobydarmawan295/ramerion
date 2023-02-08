@@ -1,6 +1,6 @@
 const model = require('../models/indexModel');
 const { Op, QueryTypes  } = require("sequelize");
-const sequelize = model.dbconfig;
+const slugify = require('slugify')
 const controller = {};
 
 controller.jualProduk = async (req, res) => { 
@@ -170,7 +170,8 @@ controller.addProduk = async (req, res) => {
     try {
         const { user_id,id_kategori,nama,deskripsi,harga,stok} = req.body;
         const gambar = req.file.filename
-        await model.produk.create({ user_id, id_kategori, nama, gambar, deskripsi, harga, stok});
+        const slug = slugify(nama);
+        await model.produk.create({ user_id, id_kategori, nama, gambar, deskripsi, harga, stok, slug});
         res.status(200).redirect("/ecommerce/daftarBarang");
       } catch (error) {
         res.json({ message: error.message });

@@ -19,14 +19,21 @@
                 <div class="col-md-4 mt-5">
                   <h3><%= items.nama %></h3>
                   <span></span> </br>
-                  <span>Rp <%= items.harga %></span><br><br>
+                  <span>Rp<%= items.harga %></span><br><br>
+                  <span>Stok : <%= items.stok %></span><br><br>
                   <div class="mb-3 mt-2">
-                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Deskripsi Produk"><%= items.deskripsi %></textarea>
+                    <label for="deskripsi_produk" class="form-label">Deskripsi</label>
+                    <textarea class="form-control" id="deskripsi_produk" placeholder="Deskripsi Produk" readonly><%= items.deskripsi %></textarea>
                   </div> 
-                  <div class="d-grid gap-2">
-                    <a href="/ecommerce/detailPembayaran" style="color: white; text-decoration:none;" class="btn btn-dark rounded-pill" type="button">Beli</a>
-                  </div>
+                  <form action="" method="post">
+                    <div class="mb-3 mt-2">
+                      <label for="jumlahYangInginDibeli" class="form-label">Masukkan jumlah yang ingin dibeli</label>
+                      <input type="number" min="1" max="5" class="form-control" aria-label="Text input with checkbox" id="jumlahYangInginDibeli" value="1" required>
+                    </div> 
+                    <div class="d-grid gap-2">
+                      <a href="/ecommerce/detailPembayaran" style="color: white; text-decoration:none;" class="btn btn-dark rounded-pill" type="button">Beli</a>
+                    </div>
+                  </form>
                 </div>
               </div>
               </div>

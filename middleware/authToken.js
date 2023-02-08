@@ -32,6 +32,9 @@ const checkUser = (req,res,next) =>{
           res.locals.username= decodedToken.username;
           res.locals.nama= decodedToken.nama;
           res.locals.id= decodedToken.id;
+          res.locals.role= decodedToken.role;
+          res.locals.email= decodedToken.email;
+          res.locals.no_telp= decodedToken.no_telp;
           // console.log(res.locals);
           next();
         }

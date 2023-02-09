@@ -109,7 +109,7 @@ controller.getAllProduk = async (req, res) => {
     try {
       await model.produk
         .findAll({
-          attributes: ['id','user_id','id_kategori','nama','gambar','deskripsi','rate','harga'],
+          attributes: ['id','id_penjual','id_kategori','nama','gambar','deskripsi','rate','harga'],
           // group: ['id_kategori']
           // raw: true,
         })
@@ -140,7 +140,7 @@ controller.getProdukById= async (req, res) => {
     try {
       await model.produk
         .findOne({
-          attributes: ['id','user_id','id_kategori','nama','gambar','deskripsi','rate','harga'],
+          attributes: ['id','id_penjual','id_kategori','nama','gambar','deskripsi','rate','harga'],
           where: {
             id: req.params.id,
           },
@@ -168,10 +168,10 @@ controller.getProdukById= async (req, res) => {
 
 controller.addProduk = async (req, res) => {
     try {
-        const { user_id,id_kategori,nama,deskripsi,harga,stok} = req.body;
+        const { id_penjual,id_kategori,nama,deskripsi,harga,stok} = req.body;
         const gambar = req.file.filename
         const slug = slugify(nama);
-        await model.produk.create({ user_id, id_kategori, nama, gambar, deskripsi, harga, stok, slug});
+        await model.produk.create({ id_penjual, id_kategori, nama, gambar, deskripsi, harga, stok, slug});
         res.status(200).redirect("/ecommerce/daftarBarang");
       } catch (error) {
         res.json({ message: error.message });
@@ -181,9 +181,9 @@ controller.addProduk = async (req, res) => {
 
 controller.updateProduk = async (req, res) => {
     try {
-      const {  user_id,id_kategori,konten,nama,gambar,deskripsi,rate,harga} = req.body;
+      const {  id_penjual,id_kategori,konten,nama,gambar,deskripsi,rate,harga} = req.body;
       await model.produk.update(
-        {user_id, id_kategori, nama, deskripsi, rate, harga},
+        {id_penjual, id_kategori, nama, deskripsi, rate, harga},
         {
           where: {
             id: req.params.id,
@@ -220,7 +220,7 @@ controller.getAllCart = async function(req, res){
     try {
         await model.cart
           .findAll({
-            attributes: ['id','user_id','produk_id','jumlah','status'],
+            attributes: ['id','id_penjual','produk_id','jumlah','status'],
           })
           .then((result) => {
             if (result) {
@@ -245,9 +245,9 @@ controller.getAllCart = async function(req, res){
   
   controller.addCart = async (req, res) => {
       try {
-          const { user_id,produk_id, jumlah, status} = req.body;
+          const { id_penjual,produk_id, jumlah, status} = req.body;
           await model.cart.create({
-              user_id: user_id,
+              id_penjual: id_penjual,
               produk_id: produk_id,
               jumlah: jumlah,
               status: status
@@ -280,9 +280,9 @@ controller.deleteCart = async function(req, res){
 controller.checkout= async function(req, res){      //checkout
 
     // try {
-    //     const { id, user_id,} = req.body;
+    //     const { id, id_penjual,} = req.body;
     //     await model.produk.create({
-    //         user_id: user_id,
+    //         id_penjual: id_penjual,
     //         id_kategori: id_kategori,
     //         konten: konten,
     //         nama: nama,

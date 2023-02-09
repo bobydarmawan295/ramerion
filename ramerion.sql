@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 08 Feb 2023 pada 08.53
+-- Waktu pembuatan: 09 Feb 2023 pada 08.23
 -- Versi server: 8.0.30
 -- Versi PHP: 8.1.10
 
@@ -226,7 +226,7 @@ INSERT INTO `komentar_forum` (`id`, `forum_id`, `user_id`, `user`, `komentar`, `
 
 CREATE TABLE `produk` (
   `id` bigint NOT NULL,
-  `user_id` bigint NOT NULL,
+  `id_penjual` bigint NOT NULL,
   `id_kategori` bigint NOT NULL,
   `nama` varchar(255) NOT NULL,
   `gambar` varchar(255) NOT NULL,
@@ -243,7 +243,7 @@ CREATE TABLE `produk` (
 -- Dumping data untuk tabel `produk`
 --
 
-INSERT INTO `produk` (`id`, `user_id`, `id_kategori`, `nama`, `gambar`, `deskripsi`, `rate`, `harga`, `stok`, `slug`, `updated_at`, `created_at`) VALUES
+INSERT INTO `produk` (`id`, `id_penjual`, `id_kategori`, `nama`, `gambar`, `deskripsi`, `rate`, `harga`, `stok`, `slug`, `updated_at`, `created_at`) VALUES
 (1, 2, 1, 'kaslung', '', 'jkolajkadhjk', 6, 5000, 4000, NULL, NULL, NULL),
 (3, 1, 1, 'baju', '', 'deskripsi', 0, 20000, 15000, NULL, NULL, NULL),
 (9, 3, 3, 'sate', '', 'pantang', 0, 9000, 2, NULL, NULL, NULL),
@@ -278,7 +278,7 @@ INSERT INTO `users` (`id`, `username`, `name`, `email`, `no_telp`, `password`, `
 (2, '2011527001', 'daffa', 'daffa@email.com', '628511289374', '$2a$10$FFhrC998SYAXea52uzE5T..8YXRyvrZL3bT5V0Hp/DY0XMZqmCba2', '', 'm', '2022-07-02 19:34:21', '2023-01-21 01:20:05'),
 (3, '2011523019', 'kemal', 'kemal@email.com', '622358328953', '$2a$10$Nt7pd7djbPhSrDoernRGQOtcS5fOqBUq4Kdp2A/QBgx4s3jJ0.L1i', '', 'm', '2022-07-04 01:08:14', '2023-02-07 05:35:39'),
 (4, '121212', 'makk', 'makk@email.com', '628957812642', '$2a$10$NPSYZIT5oULZ2ufWzSjPMu6TFVFyI4.QyY9EIeuWxFjHHCwkcrsvK', '', 'm', '2023-01-14 03:35:32', '2023-01-22 10:35:57'),
-(8, 'admin', 'admin', 'admin@ramerion.id', '085155158625', '$2a$10$GOb3vFuqzKoyr4MBGAjtZuVKJhrNl/CU5t6Okv35f3UaQ1sz18xDS', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwibmFtYSI6ImFkbWluIiwiaWQiOjgsInJvbGUiOiJkIiwiZW1haWwiOiJhZG1pbkByYW1lcmlvbi5pZCIsIm5vX3RlbHAiOiIwODUxNTUxNTg2MjUiLCJpYXQiOjE2NzU4NDIyODcsImV4cCI6MTY3NTkyODY4N30.6_lW6VZBxBvTdJVyGx4mt4KemV15ZB9iiKxWo7X4KhE', 'd', '2023-02-07 05:37:14', '2023-02-08 07:44:47');
+(8, 'admin', 'admin', 'admin@ramerion.id', '085155158625', '$2a$10$GOb3vFuqzKoyr4MBGAjtZuVKJhrNl/CU5t6Okv35f3UaQ1sz18xDS', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwibmFtYSI6ImFkbWluIiwiaWQiOjgsInJvbGUiOiJkIiwiZW1haWwiOiJhZG1pbkByYW1lcmlvbi5pZCIsIm5vX3RlbHAiOiIwODUxNTUxNTg2MjUiLCJpYXQiOjE2NzU5MzAwMjMsImV4cCI6MTY3NjAxNjQyM30.foSP56xU7TIA5uxNOE0k2JtYbH-wJ-Z1l4VXdY6wRUs', 'd', '2023-02-07 05:37:14', '2023-02-09 08:07:03');
 
 --
 -- Indexes for dumped tables
@@ -359,8 +359,8 @@ ALTER TABLE `komentar_forum`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `user_id_2` (`user_id`),
+  ADD KEY `user_id` (`id_penjual`),
+  ADD KEY `user_id_2` (`id_penjual`),
   ADD KEY `id_kategori` (`id_kategori`);
 
 --
@@ -497,7 +497,7 @@ ALTER TABLE `komentar_forum`
 -- Ketidakleluasaan untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`id_penjual`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `produk_ibfk_2` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_produk` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 

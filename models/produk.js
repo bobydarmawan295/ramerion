@@ -12,7 +12,7 @@ const produk = sequelize.define('produk', {
         autoIncrement: true
     },
 
-    user_id : {
+    id_penjual : {
         type : DataTypes.BIGINT,
         allowNull: false,
         references: {

@@ -1,4 +1,4 @@
-const model = require('../models/indexModel');
+const model = require('../models/indexmodel');
 const { Op, QueryTypes  } = require("sequelize");
 const slugify = require('slugify')
 const controller = {};
@@ -13,7 +13,7 @@ controller.getAllBlog = async (req, res) => {
         })
         .then((result) => {
           if (result.length > 0) {
-            res.render("blog/allBlog", {items : result, blogActive: "active", forumActive: "", ecommerceActive:""});
+            res.render("blog/allBlog", {items : result, blogActive: "active", forumActive: "", marketplaceActive:""});
           } else {
             res.status(404).json({
                 message: "data tidak ada",
@@ -47,7 +47,7 @@ controller.getBlogBySlug= async (req, res) => {
 
         .then((result) => {
           if (result) {
-            res.render("blog/detailBlog", { items: result, blogActive: "active", forumActive: "", ecommerceActive:"" });
+            res.render("blog/detailBlog", { items: result, blogActive: "active", forumActive: "", marketplaceActive:"" });
             // res.json(result)
           } else {
             res.status(404).json({
@@ -172,7 +172,7 @@ controller.deleteBlogComment= async (req, res) => {
         .findAll()
         .then((result) => {
           if (result.length > 0) {
-            res.render("blog/addBlog", {items: result,blogActive: "active", forumActive: "", ecommerceActive:"" });
+            res.render("blog/addBlog", {items: result,blogActive: "active", forumActive: "", marketplaceActive:"" });
             // console.log(result)
           } else {
             res.status(200).json({

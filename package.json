@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "nodemon server"
+    "start": "nodemon server",
+    "mulai": "node server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

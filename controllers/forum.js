@@ -26,12 +26,12 @@ controller.getAllForum = async (req, res) => {
         .then((result) => {
           if (result.length > 0) {
             // res.json({items: result})
-            res.render("forum/allForum", { items: result, blogActive: "", forumActive: "active", ecommerceActive:"" });
+            res.render("forum/allForum", { items: result, blogActive: "", forumActive: "active", marketplaceActive:"" });
 
           } else {
             result[0].user = "kosongggg";
             result[0].konten = "masih kosong nih forumnya";
-            res.render("forum/allForum", { items: result, blogActive: "", forumActive: "active", ecommerceActive:"" });
+            res.render("forum/allForum", { items: result, blogActive: "", forumActive: "active", marketplaceActive:"" });
           }
         });
     } catch (error) {
@@ -54,7 +54,7 @@ controller.getForumById= async (req, res) => {
         })
         .then((result) => {
           if (result) {
-            res.render("blog/editProduk", { items: result,blogActive: "", forumActive: "active", ecommerceActive:""  });
+            res.render("blog/editProduk", { items: result,blogActive: "", forumActive: "active", marketplaceActive:""  });
           //   res.status(200).json({
           //     message: 'mendapat data forum',
           //     data: result

@@ -1,11 +1,11 @@
 ###
-GET http://localhost:3000/ecommerce/
+GET http://localhost:3000/marketplace/
 
 ###
-GET http://localhost:3000/ecommerce/1
+GET http://localhost:3000/marketplace/1
 
 ###
-POST http://localhost:3000/ecommerce/addProduk
+POST http://localhost:3000/marketplace/addProduk
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 } 
 
 ###
-PUT http://localhost:3000/ecommerce/updateProduk/1
+PUT http://localhost:3000/marketplace/updateProduk/1
 Content-Type: application/json
 
 {
@@ -32,16 +32,16 @@ Content-Type: application/json
     "hargaafter": 15000
 } 
 ###
-DELETE http://localhost:3000/ecommerce/deleteProduk/2
+DELETE http://localhost:3000/marketplace/deleteProduk/2
 
 ###
-GET http://localhost:3000/ecommerce/
+GET http://localhost:3000/marketplace/
 
 ###
-GET http://localhost:3000/ecommerce/1/getCart
+GET http://localhost:3000/marketplace/1/getCart
 
 ###
-POST http://localhost:3000/ecommerce/1/cart/addCart
+POST http://localhost:3000/marketplace/1/cart/addCart
 Content-Type: application/json
 
 {
@@ -53,4 +53,4 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3000/ecommerce/deleteCart/1
+DELETE http://localhost:3000/marketplace/deleteCart/1

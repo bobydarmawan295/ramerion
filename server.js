@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const controller = require(`./controllers/indexcontroller`);
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -11,7 +10,7 @@ const multer = require('multer')
 const auth = require("./routes/auth");
 const blog = require("./routes/blog");
 const forum= require("./routes/forum");
-const ecommerce= require("./routes/ecommerce");
+const marketplace= require("./routes/marketplace");
 const kelola= require("./routes/kelola");
 
 const { isLogin , checkUser } = require(`./middleware/authToken`);
@@ -29,7 +28,7 @@ app.get("*", checkUser);
 app.use("/auth", auth);
 app.use('/blog', isLogin ,blog);
 
-app.use('/ecommerce', isLogin ,ecommerce);
+app.use('/marketplace', isLogin ,marketplace);
 app.use('/forum', isLogin ,forum);
 app.use('/kelola', isLogin ,kelola);
 

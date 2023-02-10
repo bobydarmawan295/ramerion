@@ -1,4 +1,4 @@
-const model = require('../models/indexModel');
+const model = require('../models/indexmodel');
 const { Op, QueryTypes  } = require("sequelize");
 const slugify = require('slugify')
 const controller = {};
@@ -7,35 +7,35 @@ controller.jualProduk = async (req, res) => {
     
     const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
 
-    res.render("e-commerce/jualProduk", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+    res.render("marketplace/jualProduk", { kategori, blogActive: "", forumActive: "", marketplaceActive:"active" });
 }
 
 controller.daftarBarang = async (req, res) => { 
     
     const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
 
-    res.render("e-commerce/daftarBarang", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+    res.render("marketplace/daftarBarang", { kategori, blogActive: "", forumActive: "", marketplaceActive:"active" });
 }
 
 controller.pesananPelanggan = async (req, res) => { 
     
     const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
 
-    res.render("e-commerce/pesananPelanggan", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+    res.render("marketplace/pesananPelanggan", { kategori, blogActive: "", forumActive: "", marketplaceActive:"active" });
 }
 
 controller.barangTerjual = async (req, res) => { 
     
     const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
 
-    res.render("e-commerce/barangTerjual", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+    res.render("marketplace/barangTerjual", { kategori, blogActive: "", forumActive: "", marketplaceActive:"active" });
 }
 
 controller.riwayat = async (req, res) => { 
     
     const kategori = await model.produk.findAll({attributes: [ 'id', 'nama']});
 
-    res.render("e-commerce/riwayat", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+    res.render("marketplace/riwayat", { kategori, blogActive: "", forumActive: "", marketplaceActive:"active" });
 }
 
 controller.detailProduk= async (req, res) => { 
@@ -59,7 +59,7 @@ controller.detailProduk= async (req, res) => {
       })
       .then((result) => {
         if (result) {
-          res.render("e-commerce/detailProduk", { items: result, blogActive: "", forumActive: "", ecommerceActive:"active" });
+          res.render("marketplace/detailProduk", { items: result, blogActive: "", forumActive: "", marketplaceActive:"active" });
         } else {
           res.status(404).json({
             message: "data tidak ada",
@@ -79,14 +79,14 @@ controller.detailPembayaran= async (req, res) => {
     
   const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
 
-  res.render("e-commerce/detailPembayaran", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+  res.render("marketplace/detailPembayaran", { kategori, blogActive: "", forumActive: "", marketplaceActive:"active" });
 }
 
 controller.bayar= async (req, res) => { 
     
   const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
 
-  res.render("e-commerce/bayar", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+  res.render("marketplace/bayar", { kategori, blogActive: "", forumActive: "", marketplaceActive:"active" });
 
 }
 
@@ -94,7 +94,7 @@ controller.upload_bukti= async (req, res) => {
     
   const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
   
-  res.render("e-commerce/upload_bukti", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+  res.render("marketplace/upload_bukti", { kategori, blogActive: "", forumActive: "", marketplaceActive:"active" });
 
 }
 
@@ -102,7 +102,7 @@ controller.allCart= async (req, res) => {
     
   const kategori = await model.kategori_produk.findAll({attributes: [ 'id', 'nama']});
 
-  res.render("e-commerce/allCart", { kategori, blogActive: "", forumActive: "", ecommerceActive:"active" });
+  res.render("marketplace/allCart", { kategori, blogActive: "", forumActive: "", marketplaceActive:"active" });
 }
 
 controller.getAllProduk = async (req, res) => {
@@ -115,7 +115,7 @@ controller.getAllProduk = async (req, res) => {
         })
         .then((result) => {
           if (result.length > 0) {
-            res.render("e-commerce/allProduk", { items: result ,blogActive: "", forumActive: "", ecommerceActive:"active" });
+            res.render("marketplace/allProduk", { items: result ,blogActive: "", forumActive: "", marketplaceActive:"active" });
             // res.status(200).json({
             //     message: 'mendapat data produk',
             //     data: result
@@ -172,7 +172,7 @@ controller.addProduk = async (req, res) => {
         const gambar = req.file.filename
         const slug = slugify(nama);
         await model.produk.create({ id_penjual, id_kategori, nama, gambar, deskripsi, harga, stok, slug});
-        res.status(200).redirect("/ecommerce/daftarBarang");
+        res.status(200).redirect("/marketplace/daftarBarang");
       } catch (error) {
         res.json({ message: error.message });
         // res.redirect("/dosen/add-course");

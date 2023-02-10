@@ -50,4 +50,4 @@ Content-Type: application/json
 DELETE http://localhost:3000/blog/deleteComment/3
 
 ###
-GET http://localhost:3000/ecommerce/p
+GET http://localhost:3000/marketplace/p
